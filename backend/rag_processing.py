@@ -24,6 +24,8 @@ VECTORS_FILE = BASE_DIR / "vectors.npy"
 MANIFEST_FILE = BASE_DIR / "vectors_manifest.json"
 EMBEDDING_MODEL = "gemini-embedding-001"
 EMBED_RETRIES = 3
+DOCUMENT_TASK_TYPE = "RETRIEVAL_DOCUMENT"
+QUERY_TASK_TYPE = "RETRIEVAL_QUERY"
 
 # Use headroom by default to avoid hitting hard limits.
 # You can override these from environment variables.
@@ -162,6 +164,7 @@ def load_data_from_encoded(input_dir):
 def build_manifest(data):
     return {
         "model": EMBEDDING_MODEL,
+        "document_task_type": DOCUMENT_TASK_TYPE,
         "items": [
             {"filename": item["filename"], "sha256": item["sha256"]} for item in data
         ],
@@ -208,7 +211,7 @@ def build_or_load_vector_db(data):
     vectors = []
     total = len(data)
     for index, item in enumerate(data, start=1):
-        vec = add_chunk_to_db(item["content"])
+        vec = embed_text(item["content"], task_type=DOCUMENT_TASK_TYPE)
         vectors.append(vec)
         print(f"Embedded {index}/{total}: {item['filename']}")
 
@@ -223,7 +226,7 @@ def build_or_load_vector_db(data):
     return vectors
 
 
-def add_chunk_to_db(chunk):
+def embed_text(chunk, task_type=DOCUMENT_TASK_TYPE):
     """Request embedding for text and return a 1-D numpy array.
 
     Raises RuntimeError if embedding cannot be retrieved.
@@ -235,7 +238,7 @@ def add_chunk_to_db(chunk):
             resp = client.models.embed_content(
                 model=EMBEDDING_MODEL,
                 contents=[chunk],
-                config=types.EmbedContentConfig(task_type="SEMANTIC_SIMILARITY"),
+                config=types.EmbedContentConfig(task_type=task_type),
             )
             if resp is None:
                 raise RuntimeError("Embedding API returned None response")
@@ -276,7 +279,7 @@ def retrieve_similar_chunks(query, top_k=5):
     if vector_database is None:
         raise RuntimeError("Vector database not initialized")
 
-    query_vec = add_chunk_to_db(query)
+    query_vec = embed_text(query, task_type=QUERY_TASK_TYPE)
     similarities = vector_database @ query_vec
     top_indices = np.argsort(similarities)[::-1][:top_k]
     return top_indices

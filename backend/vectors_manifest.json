@@ -1,0 +1,1086 @@
+{
+  "model": "gemini-embedding-001",
+  "document_task_type": "RETRIEVAL_DOCUMENT",
+  "items": [
+    {
+      "filename": "ABORTION.toon",
+      "sha256": "177f65c2391ca47b4d4004ce4161ace3bb87ae63b95b9226ac9d7c99b9265fb0"
+    },
+    {
+      "filename": "ACNE VULGARIS.toon",
+      "sha256": "34c11d7813de41b4eab41fac422915806ac30b0c2a61317b1c397887478b3067"
+    },
+    {
+      "filename": "ACUTE ABDOMEN.toon",
+      "sha256": "0034005d79ab4d69a14489f7c63b0f9b5d4ebdf2392e43eef5ce7e508fec1c98"
+    },
+    {
+      "filename": "ACUTE ANTERIOR UVEITIS.toon",
+      "sha256": "4b4c64a19eb1fe2447e43819cf4e8c9aaf01b9c04a8dfd59876866c567867656"
+    },
+    {
+      "filename": "ACUTE BRONCHITIS.toon",
+      "sha256": "c359e30993e0dcff40c0a4ff95f7349484bf61991fbd3f4a9019533779642f52"
+    },
+    {
+      "filename": "ACUTE CORONARY SYNDROME.toon",
+      "sha256": "2dc1789c294b2585b8ecf817b68872a1c4ae5663c3f090117b638aaa8cb4fb56"
+    },
+    {
+      "filename": "ACUTE DIARRHOEA.toon",
+      "sha256": "43291fe6df7e375f9600033695c8497f23792aed1d0a69751094b36789b1a589"
+    },
+    {
+      "filename": "ACUTE EPIGLOTTITIS.toon",
+      "sha256": "8131d868bee52ed9f5ed57be7d70987092cb79cad6ff5fb79e3c5af72ea4a1d5"
+    },
+    {
+      "filename": "ACUTE KERATITIS.toon",
+      "sha256": "a7c5bc83fd0f5a049823273f864f0fbd48d509397a09bac79e63de8e20036b6d"
+    },
+    {
+      "filename": "ACUTE KIDNEY INJURY.toon",
+      "sha256": "37d415e8b2af34d035b30f2b0cb8d39262037eec866b633cd8afcfb293257be8"
+    },
+    {
+      "filename": "ACUTE NECROTIZING ULCERATIVE GINGIVITIS.toon",
+      "sha256": "f4aa0184212befe1242868e822c61ed6d1d322a0f52c066075fa095dc4d8864f"
+    },
+    {
+      "filename": "ACUTE OTITIS MEDIA.toon",
+      "sha256": "f6cf03b5b4af4f2d6d9983cc1b2c824da890431a946698982eb999581578e270"
+    },
+    {
+      "filename": "ACUTE PERI-APICAL ABSCESS.toon",
+      "sha256": "76b5bdf901b41566423ba2094e1c28ee1043d628aa29a9b285765bec55a9e3b9"
+    },
+    {
+      "filename": "ACUTE RHINITIS (COMMON COLD, CORYZA).toon",
+      "sha256": "794d6425e12e0b720962d5c5f42a787c8ba1a0c922214d062fb5eeafa5362969"
+    },
+    {
+      "filename": "ADENOID DISEASES.toon",
+      "sha256": "2748cf890c65835523b3df0a7d77fe0eacaf9eab690032283780673b2389e988"
+    },
+    {
+      "filename": "ALCOHOL DEPENDENCE (ALCOHOLISM).toon",
+      "sha256": "322204370a364c1f892d8afddd0edcefd3b1b7a695c2d36379f225c75e7e83ed"
+    },
+    {
+      "filename": "ALLERGIC CONJUNCTIVITIS.toon",
+      "sha256": "bb3f3a6c011e627340054a81024dda06e052a6f6c480d4792723574f5f35d372"
+    },
+    {
+      "filename": "ALVEOLAR OSTEITIS (DRY SOCKET).toon",
+      "sha256": "07e628a2ae03241b522a391205640fb4020dd39b21eb6c8778ba40c4ad659499"
+    },
+    {
+      "filename": "AMOEBIASIS.toon",
+      "sha256": "a25899a58ccdf535fe71c15a8f07c6fe5f59878cc076a41834f5b5a8342f2937"
+    },
+    {
+      "filename": "ANAEMIAS.toon",
+      "sha256": "e6ff07662f75c7b95cde52154b7c5c74aa2ff99020760e074403cc5dc2f281b0"
+    },
+    {
+      "filename": "ANEMIA IN PREGNANCY.toon",
+      "sha256": "8995db0b87013aa19a1fbd705952815d76a7108342012121e8f2aa81691dbb2e"
+    },
+    {
+      "filename": "ANKYLOSIS.toon",
+      "sha256": "1a725b82e38c5e871627420076d21bc9fcc2a21a5dfd7b9fa5491319cb980b56"
+    },
+    {
+      "filename": "ANTENATAL CARE (ANC).toon",
+      "sha256": "869a0dcc6d6786ae6d5a5f9895e4319d124a112d190d596c15ccf7dd701e7039"
+    },
+    {
+      "filename": "ANTIPHOSPHOLIPID SYNDROME.toon",
+      "sha256": "281e0096c07d2075b738c8afe77fefd52139216bfa7af79ad2b38ec99ff65b3f"
+    },
+    {
+      "filename": "ANXIETY DISORDER.toon",
+      "sha256": "ea45a409e7081b868eedddace8e3a7707f9c7295a7d136f3cc7f93296e09d41c"
+    },
+    {
+      "filename": "ATOPIC DERMATITIS (ATOPIC ECZEMA).toon",
+      "sha256": "07c081be505d42560a0371af88e6aaf566874f0ce31486628683e2de3b11f7c1"
+    },
+    {
+      "filename": "BACILLARY DYSENTERY.toon",
+      "sha256": "1393c3864d81634537e861ee1d42c9b3a3ee93f1993a54eebcf24d53edd19cf5"
+    },
+    {
+      "filename": "BACK PAIN.toon",
+      "sha256": "21afcb9ca24f0a05b3e6ab1dc5f7a1e02ff0dd50fb69ed52e850b7215f32e68b"
+    },
+    {
+      "filename": "BACTERIAL VAGINOSIS.toon",
+      "sha256": "d774981857dbb59f13d76195ee48c7ec1d5e6f41a3f247c10ebef098a90027b9"
+    },
+    {
+      "filename": "BENIGN PROSTATIC HYPERPLASIA.toon",
+      "sha256": "3ae1df8a4f2968b60bcf6e70a193067a89913e0c1784cc46b656c232bc012599"
+    },
+    {
+      "filename": "BIPOLAR DISORDERS.toon",
+      "sha256": "66831b4f27b2d010bd8f7f74657ce48d6aca5962a8e582f9e9721d6b6a59b624"
+    },
+    {
+      "filename": "BLOOD TRANSFUSION IN THE NEWBORN.toon",
+      "sha256": "65f2905e009aaf2ae221c77f6385f20cd1753d625f29c9d65d58ab7db59a2f33"
+    },
+    {
+      "filename": "BLOOD TRANSFUSION IN THE NEWBORN_2.toon",
+      "sha256": "e6009dee7141ebc71db40f07735f66326a7ee57cad14ec2f545b08a95a67399a"
+    },
+    {
+      "filename": "BLOOD TRANSFUSION.toon",
+      "sha256": "0a03bcb8655fc773d8a41ecd4515336968413cd3cc7492d7fd917b4970aff40d"
+    },
+    {
+      "filename": "BREAST CANCER.toon",
+      "sha256": "031f2107efc55a05f61012e9beda57c50b199aea64e2e022fff39188fe9798f6"
+    },
+    {
+      "filename": "BRONCHIAL ASTHMA.toon",
+      "sha256": "0df48810a9750c39f9eb122f2923f1947e73a6b3a0c6b617e0500c7a6c2d40a5"
+    },
+    {
+      "filename": "BRONCHIECTASIS.toon",
+      "sha256": "3e7429abf26728f3065de7d8b841b7d2782eef86a519921fa8f6c2f799c099f0"
+    },
+    {
+      "filename": "CANCER OF THE CERVIX.toon",
+      "sha256": "39e984086ae71c6c936fa71f0fc54e2b4abaa81370faa16509f179c5123c82d1"
+    },
+    {
+      "filename": "CANCER THERAPY.toon",
+      "sha256": "7601ffd126ca2e1b39116df367be5a7b0ecf9e49808085b252153ef54f9694fe"
+    },
+    {
+      "filename": "CARCINOMA OF THE PROSTATE.toon",
+      "sha256": "424eb4b5dfd96c9c6e04accb9cd7d6d32f012a1f98512cee6e3b5296575e4135"
+    },
+    {
+      "filename": "CARDIAC ARRHYTHMIAS.toon",
+      "sha256": "94332e8d523c709aaa8489859cbc7dee52b74aef068b9057dbed502e3c4b6f93"
+    },
+    {
+      "filename": "CARDIAC DISEASE IN PREGNANCY.toon",
+      "sha256": "d7e524e08a9e5f45b3ba6a8c07f26b153836822b7e892709c93dd031bf8853f7"
+    },
+    {
+      "filename": "CARDIOMYOPATHIES.toon",
+      "sha256": "c5270be07ef5f2e331560c3e8ef9402fb2f68bc088cef247a8ce88a8b38132c6"
+    },
+    {
+      "filename": "CATARACT.toon",
+      "sha256": "648de67b967791fb89c5aec261324433df93a36e57d7016458aee2e6690dd380"
+    },
+    {
+      "filename": "CAUSES OF XEROSTOMIA (DRY MOUTH).toon",
+      "sha256": "f93f4f0d441eb12da6ae48c807086242c4d3d3db7413ca6ca99d0d0facbb67a9"
+    },
+    {
+      "filename": "CELLULITIS.toon",
+      "sha256": "f319446e78c114af93f1b18cf9cab945ed0292c92f383deb24ac0d53f7acb450"
+    },
+    {
+      "filename": "CELLULITIS_2.toon",
+      "sha256": "8369bbe03eb48f59e36bb5e23dd09b05890794743bf0d3ac6dedee7d153c3f4e"
+    },
+    {
+      "filename": "CERVICAL CANCER.toon",
+      "sha256": "80b9dfcdb9ea4995d7206dccb31bf805d99a9c74f2ddf08136d9b6c04b4ebcb6"
+    },
+    {
+      "filename": "CHANCROID (ULCUS MOLLE, SOFT CHANCRE).toon",
+      "sha256": "b4fa144f9de1720560e2d37d6ed2d66f301d6683ba50f6f584629a4239497da6"
+    },
+    {
+      "filename": "CHEST PAIN.toon",
+      "sha256": "116fc24398b6207af7a0135373b3bf0ac9c09eca98a7aac689ae1f7f24f57c35"
+    },
+    {
+      "filename": "CHLAMYDIAL INFECTION (OTHER THAN LYMPHOGRANULOMA VENEREUM).toon",
+      "sha256": "8b472d0d3a177326efb71ca328b6df2d2ce97db661448e6dc0bc06b30576bd34"
+    },
+    {
+      "filename": "CHOLERA.toon",
+      "sha256": "5cd8a0f9c98d1380fa9c5f4f810a671ca0d95b672de70bcae30c5085c748d478"
+    },
+    {
+      "filename": "CHOLESTASIS OF PREGNANCY.toon",
+      "sha256": "26d3020ed021a96443a1e97cca485920303b9f10cbeba271be84a3c746a7c457"
+    },
+    {
+      "filename": "CHRONIC KIDNEY DISEASE (CKD).toon",
+      "sha256": "52805f79bd4533ff630d86185c871a9159df8ec5e45941a49ae4b73c32fc5e49"
+    },
+    {
+      "filename": "CHRONIC LYMPHOCYTIC LEUKAEMIA.toon",
+      "sha256": "7e152289d3ce7da9312991a2c7d96551959bc327b70ded1d883e5f93848f1182"
+    },
+    {
+      "filename": "CHRONIC MYELOID LEUKAEMIA (CML).toon",
+      "sha256": "baae6d2c7469cb4502f85d3f821b627ec6bef8073cb34589ab5bfe6151f86ce0"
+    },
+    {
+      "filename": "CHRONIC OBSTRUCTIVE AIRWAYS DISEASE (COAD).toon",
+      "sha256": "65fc313468db5b04b31a3a1fb88479bc2b6267d460b1eff1926c03c8b09a2339"
+    },
+    {
+      "filename": "CHRONIC OTITIS MEDIA.toon",
+      "sha256": "fe92e1b706ab308257fb6639e34540bb0a3e4c761c7053c57859e541f1cbc110"
+    },
+    {
+      "filename": "CLINICAL FEATURES OF CHRONIC STABLE ANGINA (ANGINA PECTORIS).toon",
+      "sha256": "f31741202636e5f74c4a30d0918fa94dc7031fb9f542ed430229b5aa03a79546"
+    },
+    {
+      "filename": "CLINICAL FEATURES OF GONORRHEA IN CHILDREN.toon",
+      "sha256": "a4049d51ea0de1da7865c8cb0fcbd5b315e52a4af22d03cbc8d9da001b763fb9"
+    },
+    {
+      "filename": "CLINICAL FEATURES OF GONORRHEA IN FEMALES.toon",
+      "sha256": "ad73ebf679e838e3f4f854bbe5f8697a2b51b255412cad84fb07ef6b0f5a4fb6"
+    },
+    {
+      "filename": "CLINICAL MANIFESTATIONS OF ASPHYXIATED BABIES.toon",
+      "sha256": "39734af9f0c4d8985a97b2cf2d9672e8e6d820e17769cd8e4a668cf92674d633"
+    },
+    {
+      "filename": "CLINICAL MANIFESTATIONS OF ASPHYXIATED BABIES_2.toon",
+      "sha256": "c5e75f226154b9b154c882236c81bbe528e77c32239cb651a520dc62120901d9"
+    },
+    {
+      "filename": "COLORECTAL CANCER.toon",
+      "sha256": "8f053ecbb782083ab11826b3333c63962b442352cd065cdeb1d91926e7b5e876"
+    },
+    {
+      "filename": "CONGENITAL HEART DISEASE.toon",
+      "sha256": "d8440488fdf5ab93025d0b0249400a6dd38cab2a3245cf29cf5a02067261f7de"
+    },
+    {
+      "filename": "CONSTIPATION.toon",
+      "sha256": "f0e56516731688c144c5892dc4ec5815f54d7e88d55908c5ebdbe90ffbeac055"
+    },
+    {
+      "filename": "CONTACT DERMATITIS.toon",
+      "sha256": "a40a5fbd7a4c0a5939a1591855f8c9deada33a7d1cbced2901a3d9ef1caf2d1a"
+    },
+    {
+      "filename": "CORONARY ARTERY DISEASE.toon",
+      "sha256": "b89657065bf9538fac5a63832b8d6d86ab53c4bd2def487db6e6898ae567c5e4"
+    },
+    {
+      "filename": "CORONAVIRUS DISEASE (COVID-19).toon",
+      "sha256": "02e737da94d91a6fb1a4f89d76bd6bced5c98df22bd3bb5bc9572436814489bf"
+    },
+    {
+      "filename": "COUGH.toon",
+      "sha256": "3fc7c6ab60b5ca30f35392bb9f3d4cd51c42a61c8d9921e44d6affb48d619a58"
+    },
+    {
+      "filename": "CUSHINGS SYNDROME.toon",
+      "sha256": "b4d5360d33a230d79abcec6870d641ef4dbc3d6ffa9d523c80cdca990cc81b14"
+    },
+    {
+      "filename": "CUTANEOUS LARVA MIGRANS (CREEPING ERUPTION).toon",
+      "sha256": "2181edfa880e5d0a9c3d54a4deda41d762a2884bd8be6cc50a38edac50aa74fc"
+    },
+    {
+      "filename": "CUTANEOUS SQUAMOUS CELL CARCINOMA.toon",
+      "sha256": "8075e41cc4be988359316b85d5152125bdb0c2fa3579064c5c19957333460810"
+    },
+    {
+      "filename": "DECUBITUS (PRESSURE) ULCERS.toon",
+      "sha256": "87a30b95797ae56d8475a9c862e75b5f4a9dd63d1e0801fdeace853b4edf5be5"
+    },
+    {
+      "filename": "DEEP VEIN THROMBOSIS.toon",
+      "sha256": "c86018abeb2cf7e1092cfde2dfc234ed06fbc55a934aa15d2bab038311e1f500"
+    },
+    {
+      "filename": "DELIRIUM.toon",
+      "sha256": "705892736855871d894efb6f1684b7b6e4b049ed84230a6ab23c1c47be1a06b6"
+    },
+    {
+      "filename": "DELIRIUM_2.toon",
+      "sha256": "78024ebda8cd77d7f468ddf270c1b5e581426dd029dfc70889053bf4ca4cf450"
+    },
+    {
+      "filename": "DENTAL CARIES.toon",
+      "sha256": "b29ad528ccb070353bc6047e005b07b039a6a39f92ea399518f992830a62b0d5"
+    },
+    {
+      "filename": "DEPRESSION.toon",
+      "sha256": "2b63892e2c1b71939e809c80164acb892da12e69bcf2e5d5e45fae7af899b157"
+    },
+    {
+      "filename": "DERMATOPHYTE INFECTIONS (TINEA).toon",
+      "sha256": "7a58c9b9e9885f831949a36dd258368609af9a0a27dd0e63fd250632d40258b1"
+    },
+    {
+      "filename": "DIABETES IN PREGNANCY.toon",
+      "sha256": "1da54d94192e2af5522e09241e434b341083baad2fb60a0900e9e33ea236ae9b"
+    },
+    {
+      "filename": "DIABETES MELLITUS.toon",
+      "sha256": "6ec78cffeb995ada89d0e3f3c788995ee72ace90d2bd8826b36ed4c182a17fb0"
+    },
+    {
+      "filename": "DIABETIC FOOT PROBLEMS.toon",
+      "sha256": "bb330a280e596e58fb0961878e1e3dce234f8f96623b9639de7f5867d4f95dd5"
+    },
+    {
+      "filename": "DIZZINESS.toon",
+      "sha256": "2c1d8a2d7c03b67a7b40909b99f0821581404920f6c8c5adab0a0ccf63d9b425"
+    },
+    {
+      "filename": "DUBIN-JOHNSON SYNDROME.toon",
+      "sha256": "3b3ff102d0cbc61be89bf6d1e9077fb52c2229c5fde5debe1977e989773d9aa0"
+    },
+    {
+      "filename": "DYSPNOEA.toon",
+      "sha256": "b868cbb96c802b4a9f5859d2ef690053c5bffa0d7fc5d3247a2ea398afabb546"
+    },
+    {
+      "filename": "ECTOPIC PREGNANCY.toon",
+      "sha256": "eb8e38e2ab44530eb3618fc9b8a5084af2a0395ececd55c46b882d68de1c748c"
+    },
+    {
+      "filename": "ELDER MISTREATMENT.toon",
+      "sha256": "bcaebc620a3a636adf8420fd2bade5574830a958ce1d49dcdde830ee6d3dd837"
+    },
+    {
+      "filename": "EPISTAXIS.toon",
+      "sha256": "815419c2af9ca323e46121b6134a72c411c56713576b38d7439f3e7b3a28469e"
+    },
+    {
+      "filename": "ERECTILE DYSFUNCTION.toon",
+      "sha256": "0c10d3ae8994821a028552551a3eddb787620a3f6a7183bc6fea4e95991f4b39"
+    },
+    {
+      "filename": "EXFOLIATIVE DERMATITIS (ERYTHRODERMA).toon",
+      "sha256": "8c9c07f36e3bf2cc262cb4f9953a3b4eac8cac5a901e9ce4f0de18bd9f517941"
+    },
+    {
+      "filename": "FALLS.toon",
+      "sha256": "7f9c095aa0fb8bdbffd776ac1da998c58b298f0db49be52a3c24035c447b309b"
+    },
+    {
+      "filename": "FEVERS_ MANAGEMENT APPROACH.toon",
+      "sha256": "6d9d1d7e0c2fba164ed5863dcda98cbd45c9f85a202ae212e33895c5cc11340d"
+    },
+    {
+      "filename": "FOOD POISONING.toon",
+      "sha256": "7b43a8b59fc0a7ea8f8f8709b1b3c1e4654676ce63802251985317d88bc6c026"
+    },
+    {
+      "filename": "FOREIGN BODIES IN THE AIRWAYS.toon",
+      "sha256": "a5ded5ada0006a58b1b042104236ebdcd3d9036a20aea19b184af2a4d5cb7492"
+    },
+    {
+      "filename": "FOREIGN BODIES IN THE EAR.toon",
+      "sha256": "3b67fb429cfa8f3338dc0defc87b69c7097e11e17295544d7b9a5ef0a5521ed4"
+    },
+    {
+      "filename": "FOREIGN BODIES IN THE NOSE AND RHINOLITHS.toon",
+      "sha256": "f87f729e12faf24545dd6a6d50a3e44aa8d1cbb214dda3de8514ddd14f8b553b"
+    },
+    {
+      "filename": "FOREIGN BODY IMPACTION.toon",
+      "sha256": "3dbb54c05406cb61e50247ff16808691b833fb80e4cffafc061327ce7d156edd"
+    },
+    {
+      "filename": "FRAILTY.toon",
+      "sha256": "96502caa606d7a65aab7c4af842ac6b823b83c38ccd6bead7fb11472e8616285"
+    },
+    {
+      "filename": "FURUNCULOSIS (BOILS).toon",
+      "sha256": "d91233a054f7fe421cbe9fed8de41962d3b9846cd6df532edf81f9a13a3d8772"
+    },
+    {
+      "filename": "GASTRIC CANCER.toon",
+      "sha256": "2f44a3419b424dff14059578c6afa2aca80bfb4c9b5301cdd6397ec2148a3177"
+    },
+    {
+      "filename": "GASTRITIS.toon",
+      "sha256": "a226eeabd1eb668c119a178db6caae7a9df51630880e54cfc003ffce3cc439bf"
+    },
+    {
+      "filename": "GIARDIASIS.toon",
+      "sha256": "2082c66660b3e26ee5a6538d65f20b72e7b979aee18a3c35f29192662d347b84"
+    },
+    {
+      "filename": "GINGIVAL ABSCESS.toon",
+      "sha256": "3178d7af4af23daff275ea37292493be22fc5f81e20bee9fe8d6ae8050cb5da5"
+    },
+    {
+      "filename": "GLAUCOMA.toon",
+      "sha256": "df0623867af916f585dd70c12211d27d2d01dab95272a8f447377c3cd507c345"
+    },
+    {
+      "filename": "GONORRHEA.toon",
+      "sha256": "6269729089909e4ca9fd12876b7a304e58c0d72011eabc4e44ab15c3602cf80b"
+    },
+    {
+      "filename": "GOUT.toon",
+      "sha256": "28f1ff2fb29534570b351a334ab20b78b547372f16e5b6d3aeedcbcfff3a1040"
+    },
+    {
+      "filename": "GRANULOMA INGUINALE (DONOVANOSIS GRANULOMA VENEREUM).toon",
+      "sha256": "301c7ed69c10d3c1efa55f7a67fe1c75b8b5fa51ea29f6681f8a5d5fd56cd81e"
+    },
+    {
+      "filename": "GUINEA WORM DISEASE (DRACUNCULIASIS).toon",
+      "sha256": "5167e8be042bcc6e36783aa557c0223140543fc6520c71fd7d90e2f3aee3d367"
+    },
+    {
+      "filename": "HAEMORRHOIDS.toon",
+      "sha256": "e8c1bab508626c88cf88a41c5f5de38937aeb798a16a5229c1d8f98bc28abc5c"
+    },
+    {
+      "filename": "HEADACHES.toon",
+      "sha256": "f9f336bdb222911425bbf93972ad973b98299544b7ba4e135a450e73e816e4bd"
+    },
+    {
+      "filename": "HEART FAILURE.toon",
+      "sha256": "75e241ced60e888cd4e88d00c9e379edae29d0844f7544691b9720cd1a6f2713"
+    },
+    {
+      "filename": "HELMINTHIASIS.toon",
+      "sha256": "e20b3b434b3be63318f7ca65bfb7e112aff0aa3c551bea9d82eca1318a4eef14"
+    },
+    {
+      "filename": "HEPATITIS.toon",
+      "sha256": "f73661ee214586be7b7e302c5df32b592ded037d37ea2ef6a9f5cced82ef3fe8"
+    },
+    {
+      "filename": "HEPATOCELLULAR CARCINOMA (HCC).toon",
+      "sha256": "42381048b209400afb7a99aaf3050354cd03084ec1bc23890ccb09d72d01f907"
+    },
+    {
+      "filename": "HERPES ZOSTER.toon",
+      "sha256": "69c0cc2d241970283b537576aedb8088e8194beded29570437a6872ec7cb856d"
+    },
+    {
+      "filename": "HUMAN IMMUNODEFICIENCY VIRUS (HIV) INFECTION.toon",
+      "sha256": "ab9b091c612ed96d6ab7f316df23447664f77bbf99c0106a5d75f5cff79a6e6e"
+    },
+    {
+      "filename": "HYPEREMESIS GRAVIDARUM.toon",
+      "sha256": "ac51377976920abdca778c68f181e093b4df01ed4a2bef68c62bb7d6be1debd7"
+    },
+    {
+      "filename": "HYPERGLYCEMIA IN A CHILD.toon",
+      "sha256": "9a665bee3981284abf369a080a91e46452e8bf1fb3428fec13e0048f80992590"
+    },
+    {
+      "filename": "HYPERGLYCEMIA IN A CHILD_2.toon",
+      "sha256": "9edfc8be5d98b9793ef68b788bf47f0649b7ce0b2dab65c71bdc3a93335bf136"
+    },
+    {
+      "filename": "HYPERLIPIDAEMIA.toon",
+      "sha256": "58b4a0dcf9aca4442f65b47c689c96e68d12415d857d3f284a4d6c896b2a1b11"
+    },
+    {
+      "filename": "HYPERTENSION.toon",
+      "sha256": "ccd024ba558ab16a78819f5555bf30c431e218bd33e727b05c8b10ffea94c2e4"
+    },
+    {
+      "filename": "HYPOGLYCEMIA IN A CHILD.toon",
+      "sha256": "403eeee3aae8c6a999e08471860ec71387deb0e7c2f43b1d4787f7b19b824a90"
+    },
+    {
+      "filename": "HYPOGLYCEMIA IN A CHILD_2.toon",
+      "sha256": "c418962eb7f73bc999b0ec157d0cb94d414efb1ea10588079f963ebc06462497"
+    },
+    {
+      "filename": "HYPOTHYROIDISM (MYXOEDEMA).toon",
+      "sha256": "025d172715b3e286834a76c0518594f7312873481971c74e453ec3b74d87ae09"
+    },
+    {
+      "filename": "IDIOPATHIC INFLAMMATORY MYOPATHIES.toon",
+      "sha256": "9f186e7b6df3aca87c9740187d312986a1ec9f0790bf29b6733f2bb277630603"
+    },
+    {
+      "filename": "IMPETIGO CONTAGIOSA.toon",
+      "sha256": "55281bb7ea3e152e078ca416b5058dca64e500e8881249c89d6f9dcb19f798a5"
+    },
+    {
+      "filename": "INFECTIVE CONJUNCTIVITIS.toon",
+      "sha256": "52f0a7ce6315a03f01131908390160ed8b80df2d6b4dce33070b6b5e50427379"
+    },
+    {
+      "filename": "INFECTIVE ENDOCARDITIS.toon",
+      "sha256": "b8aeca80939d82a1467cebb53fb2a119ea01076920c8a727725f8ee7fd85d0bd"
+    },
+    {
+      "filename": "INSOMNIA.toon",
+      "sha256": "727074c65d7af29d3f65d8fec2d07a82c146b83806ea10bde34c7022dbc17505"
+    },
+    {
+      "filename": "INTRA-HEPATIC CHOLESTATIC JAUNDICE OF PREGNANCY.toon",
+      "sha256": "8ad916f92742b4126ea957724d6b8331758734d236ecbc87ae8918994ffbbdd1"
+    },
+    {
+      "filename": "JAUNDICE IN PREGNANCY.toon",
+      "sha256": "01ab94d105f5458a331fe1f7c064fd67e269cfa9e472e961109a8e1dbe3a4c20"
+    },
+    {
+      "filename": "JAUNDICE.toon",
+      "sha256": "2563b3c09046dd2eda2652159837e231494bdd6eeb1ddd7d675e55ad3fbfdfc9"
+    },
+    {
+      "filename": "JUVENILE PERIODONTITIS.toon",
+      "sha256": "1cbd20e7a6292fd96357c876c789cfdb43a807dbc4292d0ed0d9e6f34759b04b"
+    },
+    {
+      "filename": "KWASHIORKOR AND MARASMUS.toon",
+      "sha256": "5f9fd0d43bbf93f5145f1b83711a5935ac8934c9403b7e169ab17c5c4f2f2232"
+    },
+    {
+      "filename": "LEUKAEMIA.toon",
+      "sha256": "67c5e52bbf4b6f069b734e540b8a986db22d0872939378ca52a4e0ee5beb7541"
+    },
+    {
+      "filename": "LICHEN PLANUS.toon",
+      "sha256": "7abf9062886239a16dea9e77f5903a05167299122187b47c203ed86971c9a3b8"
+    },
+    {
+      "filename": "LIVER CIRRHOSIS.toon",
+      "sha256": "7845507acae0bdd6770c976be6990a76c75859ab0a186c3acc44e8b50c868bfc"
+    },
+    {
+      "filename": "LUNG ABSCESS.toon",
+      "sha256": "8afc0b1e87966979299425c7a34def2a66f63b424d06424ac5f4cf3193b19b67"
+    },
+    {
+      "filename": "LUNG CANCER.toon",
+      "sha256": "317a297306765c137300770ca807cc3f072e31d67a666e14ddd22c88e007e404"
+    },
+    {
+      "filename": "LYMPHOGRANULOMA VENEREUM (CLIMATIC BUBO; LYMPHOGRANULOMA INGUINALE; LYMPHOPATHIA VENEREAL; DURAND-NICHOLAS-FAVRE DISEASE).toon",
+      "sha256": "068ce284957134bfc872f835d5640ed9e2918aef7b36f146023819508bfcc5ca"
+    },
+    {
+      "filename": "LYMPHOMAS.toon",
+      "sha256": "4e742c46b58553db5f0c1a9eccd6c4fbf0080a73c54ef897821348f3d3770bce"
+    },
+    {
+      "filename": "MALARIA IN THE NEWBORN.toon",
+      "sha256": "c4a779c6a0982384fc93cb43a8b0ced74c18c83ac619a6e14fc291a2d3feacad"
+    },
+    {
+      "filename": "MALARIA IN THE NEWBORN_2.toon",
+      "sha256": "4bc152a03b925115181c707f63a3bca6abc1da8fa0ad78f3b6653879e87dcf36"
+    },
+    {
+      "filename": "MALE INFERTILITY.toon",
+      "sha256": "36051c6bca67831be39d021bbef4fd246b763dfe58a174e0d983f0798520565e"
+    },
+    {
+      "filename": "MASTOIDITIS.toon",
+      "sha256": "2e63f21d2619c46ce4b294666b48d2835d1f52da964f094c80f4aae3106506d0"
+    },
+    {
+      "filename": "MEASLES (RUBEOLA).toon",
+      "sha256": "5fd4736bab155b2adae15ab6430b225cc3397529eaa28e284a9f36d36adda51b"
+    },
+    {
+      "filename": "MENINGITIS.toon",
+      "sha256": "48de8b1973818f3911a2a06795f9a68e954d9d5c612bbb25195871d358ea3c4b"
+    },
+    {
+      "filename": "MICRONUTRIENT DEFICIENCIES.toon",
+      "sha256": "1fdfa2a4d0e07addeb9ea27f9051d687df1de72f0335f206a4625c3819e02909"
+    },
+    {
+      "filename": "MIGRAINES.toon",
+      "sha256": "21d2812777d775f8a743a4ed9a569930d3d8ddbe44c2f1c8a4858f06aebc3426"
+    },
+    {
+      "filename": "MOLLUSCUM CONTAGIOSUM.toon",
+      "sha256": "77b7deba21ef78c0bedd2298471311e828bf936b83a8ec34fe5380e9060ed530"
+    },
+    {
+      "filename": "MULTIPLE MYELOMA.toon",
+      "sha256": "ce3515e985510910ee9bd860aa6e5cfe20c1e04e527c8fc263f5733cb92f8945"
+    },
+    {
+      "filename": "MYIASIS.toon",
+      "sha256": "6ee6e3b02a06cd40f3fc97f3b1529312d9be489a4b5c73697d18ea2635d455ec"
+    },
+    {
+      "filename": "MYOCARDITIS.toon",
+      "sha256": "8b08660489d6d3b8d6c2007327f17e78d984efdadc94ca43935aa173f902ed04"
+    },
+    {
+      "filename": "Malaria.toon",
+      "sha256": "b75022b15a221cbbfbc6056ebc5e87a23e4349ca6fdba94deea9c7cf5a61fde9"
+    },
+    {
+      "filename": "NASAL ALLERGY.toon",
+      "sha256": "b0924ded69bbec33d31b02112eaf7f757387d4e98eb3aae250c379c97c5ad020"
+    },
+    {
+      "filename": "NECROTIZING ENTEROCOLITIS.toon",
+      "sha256": "d32fb587eef94a7b460ea9cae9f192892ddc068a976643066524cf1a6a0a2915"
+    },
+    {
+      "filename": "NECROTIZING ENTEROCOLITIS_2.toon",
+      "sha256": "576726ad72134aa86806bab95306c104246b8787fcce662b4e22be73c78e4c0d"
+    },
+    {
+      "filename": "NEONATAL JAUNDICE.toon",
+      "sha256": "f88ea0c7b29e781a1d272ec9ef992adfe0c795ea5e0a9125aeb934b8688fca21"
+    },
+    {
+      "filename": "NEONATAL SEPSIS.toon",
+      "sha256": "3803484c28bf383baa8f27cbc46c7ae12685a8df2705d78cb1780eeb3a2d6922"
+    },
+    {
+      "filename": "NEONATAL SEPSIS_2.toon",
+      "sha256": "757e16335ce33031b290cc9417cb5deee976ffc62f5213a66a3d4bb68c322631"
+    },
+    {
+      "filename": "NEONTAL JAUNDICE.toon",
+      "sha256": "54c77b83310039253419da979ac65131eeed558547b93c7de547e4c2cdbf365c"
+    },
+    {
+      "filename": "NEOPLASMS OF THE SALIVARY GLAND.toon",
+      "sha256": "8c8fbb80c30444cf8bebe3571510e0fa3f50b05e1c588181720572817b8fac71"
+    },
+    {
+      "filename": "NEPHROTIC SYNDROME.toon",
+      "sha256": "50a7e349184a78a1c7035bd29ea5d0e1c09107159a2dfbd070c269bf95c01088"
+    },
+    {
+      "filename": "NON-OBSTRUCTIVE (SIMPLE) CHRONIC BRONCHITIS (NCB).toon",
+      "sha256": "eb9db811f86d122e450153f74dc3abb65a9b68de2250bd78ec6d13b76b82025e"
+    },
+    {
+      "filename": "OBESITY.toon",
+      "sha256": "5d1a543b3c20c6fc9e5c2ac951255d3446849b924ccc3f117e526e9953ef3fe0"
+    },
+    {
+      "filename": "OBESITY_2.toon",
+      "sha256": "575959b47029a314a1a54d7aac16e4feab597efc7474470702fad7af3006bda1"
+    },
+    {
+      "filename": "ONCHOCERCIASIS (RIVER BLINDNESS).toon",
+      "sha256": "26170d4126bca8e203ad92784a782446d7208aebf99effca9fba69ecdd2c3541"
+    },
+    {
+      "filename": "OPHTHALMIA NEONATORUM.toon",
+      "sha256": "ca9b33df34cf4d5fc54e52e61c8176c35a876c278c90435f9b23488299f622c5"
+    },
+    {
+      "filename": "ORAL THRUSH (CANDIDIASIS).toon",
+      "sha256": "3c5e0893160f732edd49d3e6852ad5c54cea4daf225f427a2b256ae0df99a976"
+    },
+    {
+      "filename": "OTITIS EXTERNA.toon",
+      "sha256": "12aa0f5cde3f1ef15731942882cab722a95896e17e70f2fad6484294bbd967c9"
+    },
+    {
+      "filename": "OVERVIEW OF THE TREATMENT OF SOLID TUMOURS IN SURGICAL PRACTICE.toon",
+      "sha256": "b499a4ba186404372bbd8caeb415667a9d459301b04585b3da6646ba23aece1c"
+    },
+    {
+      "filename": "Osteoarthritis.toon",
+      "sha256": "0735120b488d29db8584aecc31e9ef15c73b856852babe2f34d1b6217eb3d14c"
+    },
+    {
+      "filename": "PANCREATITIS.toon",
+      "sha256": "dd3a01f141abd617eb1462185121578c835f757ab3c8b24f908ed421be306883"
+    },
+    {
+      "filename": "PANIC DISORDER.toon",
+      "sha256": "79a258300aee0f8e5a0d47a19c9c5a65a95fc42f5464ae4d3c3ce2240ec3c128"
+    },
+    {
+      "filename": "PARKINSONISM.toon",
+      "sha256": "d69969201442369b4b6df6a75136501de29ed141f3c8a9b51d0b6d82561d4505"
+    },
+    {
+      "filename": "PEDICULOSIS (LICE).toon",
+      "sha256": "ca4ae3a04d015f3f6c5da511afa2b3188ba9f202997e402b5514dd5128b09645"
+    },
+    {
+      "filename": "PELVIC INFLAMMATORY DISEASES.toon",
+      "sha256": "f849d295b4e54e0af69a9cc130a3f61992513c13c75feccb400d7b09424b0f81"
+    },
+    {
+      "filename": "PEPTIC ULCER DISEASE (PUD).toon",
+      "sha256": "46cdca154674d3d0d72e5d7e02990871eed51d77aff9b0cc8745ae1372c7dce4"
+    },
+    {
+      "filename": "PERICARDITIS.toon",
+      "sha256": "18a755c3f8b247db13ee872c76597627a5a932c9db0de01dc321bb4bba03d6c9"
+    },
+    {
+      "filename": "PERICORONITIS.toon",
+      "sha256": "c2fdc83a16f53407b7051a9edffb725daf0b738019319f5a5f09703a7779c30a"
+    },
+    {
+      "filename": "PERIODONTITIS.toon",
+      "sha256": "2b7fc800b53085f8411db12a4a2a8886aec8959a147ef4f4611b15487416eeb2"
+    },
+    {
+      "filename": "PERIPHERAL VASCULAR DISEASE.toon",
+      "sha256": "481f48a0f029df32519f19dd35aeedd533ece8fcfc0a6eca18178e8a389b9393"
+    },
+    {
+      "filename": "PERITONSILLAR ABSCESS (QUINSY).toon",
+      "sha256": "3176291a81424ef365e5df749c9ea7e3476b1a768dd3e35c39cabe2236ba0bf8"
+    },
+    {
+      "filename": "PHARYNGITIS (SORE THROAT).toon",
+      "sha256": "ce9a3685d0ede3fb9662e5963fa138538f83d16379d9d9a23ce2607731be98cf"
+    },
+    {
+      "filename": "PITYRIASIS ROSEA.toon",
+      "sha256": "8c00b9cc629e135caef13ec03ca8fd1c868f5ca2b2dbdf569e7519d5ac3af287"
+    },
+    {
+      "filename": "PITYRIASIS VERSICOLOR (TINEA VERSICOLOR).toon",
+      "sha256": "ac67ff7ef6789b6120379d818db7578ec190af04c6a0cd942802d8569706fe91"
+    },
+    {
+      "filename": "PLAQUE-INDUCED GINGIVITIS.toon",
+      "sha256": "21e3bae0002cc8dafa03fcb283e97310260b214fddd2feb2464b520e39cfb6fe"
+    },
+    {
+      "filename": "PNEUMONIA.toon",
+      "sha256": "3ae0a35c596bab0354f560c63c9884f5ea283e864d4e93999cbf2a6132f71784"
+    },
+    {
+      "filename": "POLIOMYELITIS.toon",
+      "sha256": "93d80db16aaab7e8755e80288be7da6f4ee1d112de292ff64af57d4962695422"
+    },
+    {
+      "filename": "POLIOMYELITIS_2.toon",
+      "sha256": "83b1c21ff8f9dbc00e88375b6bdb97a258be46d98bf4d0ccf8eafc85bad7441b"
+    },
+    {
+      "filename": "POSTERIOR URETHRAL VALVES.toon",
+      "sha256": "3abe2b0551a7ddf6528c15d1305fa534f2d70f521943a77c59d42d5cb5b7bb95"
+    },
+    {
+      "filename": "PREVENTION AND CONTROL OF SURGICAL SITE INFECTION.toon",
+      "sha256": "bae886f9fd59bb26e913e82258835655fe263f7577f0d234c559ddecf1fcf7aa"
+    },
+    {
+      "filename": "PREVENTION OF BLOOD LOSS AND BLOOD TRANSFUSION IN SURGERY.toon",
+      "sha256": "bdd3fb732e6d15a9781ca37858f16cacbfd673dfa5bc194e2e8b6ce9ee84c2e5"
+    },
+    {
+      "filename": "PREVENTION OF DIABETES.toon",
+      "sha256": "bc8c4bf95286b5aa5f521a8326afcccbefa55a18e2642e77914639100eff4054"
+    },
+    {
+      "filename": "PRIAPISM.toon",
+      "sha256": "828ab4b49657940fe93c5d9b63a5143476a4ce95f24df5d220bf7cff81fe8ebe"
+    },
+    {
+      "filename": "PROSTATITIS.toon",
+      "sha256": "0a1a846aafab15cbd1dbc1be40e60b413e723c3e45a31b0db29920d3795f3c3a"
+    },
+    {
+      "filename": "PRURITUS.toon",
+      "sha256": "8406cbae60bbd5d583241f24bf18280531acedf8534bf5e2c108e1abad86ca27"
+    },
+    {
+      "filename": "PSORIASIS.toon",
+      "sha256": "32ae378687ec95be8a4c31455c29d299e084246cca6912c495a7fad8671798c9"
+    },
+    {
+      "filename": "PULMONARY OEDEMA.toon",
+      "sha256": "3446d1ced394cbab1daba75611436d5d0e98333286bbcda27b2558c109487884"
+    },
+    {
+      "filename": "PULMONARY TUBERCULOSIS.toon",
+      "sha256": "19d92b9913c0bbf9dd687a9ce6f0b3915eb4b252073281395273985996b7cf10"
+    },
+    {
+      "filename": "PULPITIS.toon",
+      "sha256": "f0d7969c4ad21e62865862ad431261bfb277f5a14affbfdf1fa2d735500c529f"
+    },
+    {
+      "filename": "RABIES.toon",
+      "sha256": "bc14c9cee5d029abc83e7cf707d0008319abe211b86f6501ba1916a979440043"
+    },
+    {
+      "filename": "RAPE.toon",
+      "sha256": "73a8dbf6063e74806eaadbe14b2015230e4f8eaea3109cbcf9d5fb3bcc610650"
+    },
+    {
+      "filename": "RECURRENT APHTHOUS STOMATITIS (RAS).toon",
+      "sha256": "d76994b615bcf1fd3f37ce7bb22d56786f8ff495922529306a158dccbae40a80"
+    },
+    {
+      "filename": "REHUMATIC HEART DISEASE.toon",
+      "sha256": "df38a2eec8d92557e27573bec212d0e4f11eeb416b11c69384aaf4c1d03dbee8"
+    },
+    {
+      "filename": "RENAL CELL CARCINOMA.toon",
+      "sha256": "b3dd9e8f7d2c7cbc27cd851aea9d7915323ff9b56c5c79ccb4e4e4671f08fb77"
+    },
+    {
+      "filename": "RHEUMATIC AND MUSCULOSKELETAL DISORDERS.toon",
+      "sha256": "4e338e19b9c74823288d9164e3d7ee9b38a28af35b1e93b76fe4ecbcd00e632e"
+    },
+    {
+      "filename": "RHEUMATIC FEVER.toon",
+      "sha256": "9a8e43dbd4c587e0b988cc5722d3af9f2e6298d05c2b9abb729104f9e9955a72"
+    },
+    {
+      "filename": "RHEUMATOID ARTHRITIS.toon",
+      "sha256": "c36d3445f5e5ab68ded80e5f2dd3aa6d8a6b29f3d05cd70750778501e4ae2e3a"
+    },
+    {
+      "filename": "RHEUMATOID ARTHRITIS_2.toon",
+      "sha256": "7555eb1161fa84c309e5fa0e9162afb0383ebdb5a70caad2a22862c15a4dbf48"
+    },
+    {
+      "filename": "SAFETY OF DRUGS AND PHARMACOVIGILANCE.toon",
+      "sha256": "b2fbdfd3d98a0384ce1ab34a5a649f5f0a01d6f23e5a27fe3fa58dfb30c041e2"
+    },
+    {
+      "filename": "SAFETY OF DRUGS AND PHARMACOVIGILANCE_2.toon",
+      "sha256": "864e5977aafc4bd80025978686a9d0f158eef435e64560a618b9546c36299d6f"
+    },
+    {
+      "filename": "SALIVARY GLAND DISEASES.toon",
+      "sha256": "9cdae2ebcae05dda78b2df33fda1f4ba2d3fb8dec1df8baba650c07962591fdb"
+    },
+    {
+      "filename": "SCABIES.toon",
+      "sha256": "5bbe523e7a655f7a86944fcdc4b88855e969957a25990b938612a65c5443ef22"
+    },
+    {
+      "filename": "SCHIZOPHRENIA.toon",
+      "sha256": "e8d1fa200d80a0ddf098116251066417e2105f2d05065687b416a691445d47e4"
+    },
+    {
+      "filename": "SCLERITIS_EPISCLERITIS.toon",
+      "sha256": "13dc81629b5fd7e19166462f405af640f4ed431f9db2c6509ae3571cd391904a"
+    },
+    {
+      "filename": "SCLERODERMA (SYSTEMIC SCLEROSIS).toon",
+      "sha256": "766001ad12600078c715be8ad367c50225e489b4a2505df532aa9f9c8ebf88e4"
+    },
+    {
+      "filename": "SCORPION STING.toon",
+      "sha256": "81693ef033b21a4e8c2276a482c32a9c58b5e077663f6f0da3aac26f9fcbbd86"
+    },
+    {
+      "filename": "SCORPION STING_2.toon",
+      "sha256": "81693ef033b21a4e8c2276a482c32a9c58b5e077663f6f0da3aac26f9fcbbd86"
+    },
+    {
+      "filename": "SEIZURES_EPILEPSIES.toon",
+      "sha256": "fee2434566c9129b6763064ec6d868569ee29d28c3e07fc3a2444cd54ed0296d"
+    },
+    {
+      "filename": "SEPTIC ARTHRITIS.toon",
+      "sha256": "9f88d817d52a404732153aa58ed0c5ec609fdca14be88daad1f4970fad082888"
+    },
+    {
+      "filename": "SIALADENITIS.toon",
+      "sha256": "e80e54e88f788af993b8e88a8d8db375696242bfaadf0f4b19ddbd3c3399efd7"
+    },
+    {
+      "filename": "SICKLE CELL DISEASE.toon",
+      "sha256": "a7c08a71c3b868c14c930599052abc804dadec5b6242485ac58701f573781eee"
+    },
+    {
+      "filename": "SICKLE CELL DISEASE_2.toon",
+      "sha256": "aaa4dd79bfd29bb84438161665fe08567425cb3972903805b8b577f7d10f43d5"
+    },
+    {
+      "filename": "SICKLE CELL DISEASE_3.toon",
+      "sha256": "e653d0110a605fe71a663c4d5f1919eeb524ed4d351f09d0747b05f80345e7cb"
+    },
+    {
+      "filename": "SINUSITIS.toon",
+      "sha256": "0ae3df4453f105649ed196e6a04511fbb87dcdc497c2fcc7ab3a5e66098db808"
+    },
+    {
+      "filename": "SNAKE BITE.toon",
+      "sha256": "22cd93e4ee853994facfbc6f9e509e0f9759fcb4e6f112da61aaca272498d1a3"
+    },
+    {
+      "filename": "SNAKE BITE_2.toon",
+      "sha256": "7ee115e9efb2d46dec0bb046484f3d89e8f64fe5e7c668a23a1e0bdd351706e5"
+    },
+    {
+      "filename": "SOFT TISSUE SARCOMA.toon",
+      "sha256": "2e246217fc699159cfcff5fcfc6d1ce05fdc144df7808908e7cc1646627428a9"
+    },
+    {
+      "filename": "STROKE (BRAIN ATTACK, CEREBROVASCULAR DISEASE, APOPLEXY).toon",
+      "sha256": "0aa7d26f7648e0f19e3d2da852e60ace1d372cb913344702ada039536a9c8c72"
+    },
+    {
+      "filename": "STYE (HORDEOLUM).toon",
+      "sha256": "3308f806032d8d0f3933a3ac196422be6d63517c981e43f3f709ec73ac85bff0"
+    },
+    {
+      "filename": "SURGICAL CARE.toon",
+      "sha256": "4b8587e1e2706b489b5f74e6e9de63d3a5464185c1cf349fe13805e41be7b9bf"
+    },
+    {
+      "filename": "SYNCOPE (FAINTING).toon",
+      "sha256": "69e5dc9c1a3cc9b9797f090d0180fc287953037acc6644c7594d01f688ab326b"
+    },
+    {
+      "filename": "SYPHILIS.toon",
+      "sha256": "62be23f35097e859e5a598df30e412c63405e14010072c57183a2fa4634bbb49"
+    },
+    {
+      "filename": "SYSTEMIC LUPUS ERYTHEMATOSUS.toon",
+      "sha256": "841e4f890cddd31b323a9f64b91ef08621b180cd22d08905325a1a2d9712c6bb"
+    },
+    {
+      "filename": "TEMPOROMANDIBULAR JOINT DISORDERS.toon",
+      "sha256": "01a23afb72d6f278eb6f857cd040f7f19454c3cb655451469706f70683a25c78"
+    },
+    {
+      "filename": "TEMPOROMANDIBULAR JOINT PAIN DYSTFUNCTION SYNDROME.toon",
+      "sha256": "cb51d99c3e016b7ea443cf0050466afa2ae2a8a088f59e70676900ce37fabd81"
+    },
+    {
+      "filename": "TETANUS.toon",
+      "sha256": "2426cce5a1cd71ddda43b3e66b5081d364e21b499cd9cc50c89b30abf9c51adb"
+    },
+    {
+      "filename": "THE EMPTY SCROTUM.toon",
+      "sha256": "389ebf4082946c24e4f3abcd235be828f9df4e73bfa6ba1976e5cee83d5a1b8e"
+    },
+    {
+      "filename": "THE PARALYZED PATIENT.toon",
+      "sha256": "c59f1c37a961f99fe9cab8e563ff32985d403146bb39f5b1a3053f70726d0cf5"
+    },
+    {
+      "filename": "THE RED EYE.toon",
+      "sha256": "d1fc83e947dec06d5136e7234a94f2d5b5278f8a8f1a6f9b0f4566dad5b84983"
+    },
+    {
+      "filename": "THE UNCONCIOUS PATIENT.toon",
+      "sha256": "b03f4c6a93d4d28b80cee7ba1132fd7361fec1b08539c57f94b41071f2e9b9dc"
+    },
+    {
+      "filename": "THYROTOXICOSIS.toon",
+      "sha256": "02056571aace058c273833a807bc97094c62e4db65c8004064c7d447040e9459"
+    },
+    {
+      "filename": "TONSILLITIS.toon",
+      "sha256": "9cfc96bb68b088a20eb22a123f232eba511d3bc8121576ad739b410e190fe510"
+    },
+    {
+      "filename": "TORSION OF THE TESTIS.toon",
+      "sha256": "ce6498c7d811011b6a60dea0ecc8bfee0d890dca149c69461835d774036fd3e4"
+    },
+    {
+      "filename": "TRACHOMA.toon",
+      "sha256": "e50c81858930761b870848d15f548b395add9ed0f520b2170257d9c92069ec9b"
+    },
+    {
+      "filename": "TRAUMA TO THE TEMPOROMANDIBULAR JOINT.toon",
+      "sha256": "d20987f882973b9184ba809a053d5c53b712793c17874e6050e2092eb7a2fd61"
+    },
+    {
+      "filename": "TREATMENT OF APNEA IN A CHILD.toon",
+      "sha256": "ffc7cb0507ab011092b717ae5a6d8998f20e6d67ada223941686c9a7d68cd80e"
+    },
+    {
+      "filename": "TREATMENT OF APNEA IN A CHILD_2.toon",
+      "sha256": "bcec066788ba35e8fcd733467adb87bc5d4ea1e2b61975cbdc9fac51f6de3414"
+    },
+    {
+      "filename": "TRICHOMONIASIS.toon",
+      "sha256": "efae9fae55aa3897e83bf971d54b5d4d7bafab50628cf26630e4b13c9e097a63"
+    },
+    {
+      "filename": "TRYPANOSOMIASIS (SLEEPING SICKNESS).toon",
+      "sha256": "efabfb89796448674af8d3fb20f21173d9dce5cd629c82151363dc71975bef2a"
+    },
+    {
+      "filename": "TUMOUR LYSIS SYNDROME.toon",
+      "sha256": "6837189eca39dad5c0673b58199425fa2ebdec22788e010485b2e583a6dc4c3b"
+    },
+    {
+      "filename": "TYPHOID FEVER (ENTERIC FEVER).toon",
+      "sha256": "a356c836aebdc0e5fc7d7b79cd29e16beef3072b75ae5facac8a6ba066eb22e0"
+    },
+    {
+      "filename": "URETHRAL STRICTURES.toon",
+      "sha256": "6a1ea81fb1a94450eda4fd38f3ae9b5d4a92b653ca285e2c182eff978de9b4ad"
+    },
+    {
+      "filename": "URINARY SCHISTOSOMIASIS.toon",
+      "sha256": "dc846e9299d20b67202e3b5553b93eefc9858c82b19bb2db79dfd22f41e42126"
+    },
+    {
+      "filename": "URINARY TRACT CALCULI.toon",
+      "sha256": "7c813acc8e3de2092a4c72407ec20890e96cdb3bff1443c0d57166ba214f5c29"
+    },
+    {
+      "filename": "URTICARIA AND ANGIOEDEMA.toon",
+      "sha256": "af392673f915253d4418f20c62941d085b28a2eae711c541c030093bab7a43d2"
+    },
+    {
+      "filename": "VARICELLA (CHICKENPOX).toon",
+      "sha256": "40a836775f3cbb2a5692ddf8d0a98361ed339dcc91da558bffd1cf9840fecdd4"
+    },
+    {
+      "filename": "VERTIGO.toon",
+      "sha256": "78718491f2a9b35014bd1ca5d81baa69007852875f78c49a741c190b8802b1e3"
+    },
+    {
+      "filename": "VIRAL HEPATITIS.toon",
+      "sha256": "f642647662e74a85c5b172d981139baa132948e1c9388ac0c61c900752102b69"
+    },
+    {
+      "filename": "VIRAL WARTS (VERRUCAE).toon",
+      "sha256": "5b16c6de15b3c1f17aae3f58d8fa9034dadd1eb78c12086c9901dfeba31fffa7"
+    },
+    {
+      "filename": "VITAMIN A DEFICIENCY.toon",
+      "sha256": "f72f1f8e2b6818442551f9ef958271dfd29ab5d1de93a715897dceea493f0448"
+    },
+    {
+      "filename": "VITAMIN A DEFICIENCY_2.toon",
+      "sha256": "4432b3486c6fcb5457c7f48c833a805851ee07a391efdaedf8ad351b359fec05"
+    },
+    {
+      "filename": "VITAMIN K DEFICIENCY BLEEDING.toon",
+      "sha256": "1303886277f2c43119f4626be11d77c8451461d5a7cbedd5a1af55c746c6fea1"
+    },
+    {
+      "filename": "VITAMIN K DEFICIENCY BLEEDING_2.toon",
+      "sha256": "d6ad387fb2f52706f4841c2ba4022e446ebc438cd698ec407e827f8fd7fa5feb"
+    },
+    {
+      "filename": "VITILIGO.toon",
+      "sha256": "52096f378567d51ccd3822143c82bd3d47564752c3b7aa6efbd668fda3882a94"
+    },
+    {
+      "filename": "VULVO-VAGINAL CANDIDIASIS.toon",
+      "sha256": "d00338ea4ff0fe398b44290b935abccae8f8407805f83f5bb29a949f366a6463"
+    },
+    {
+      "filename": "WAX IN THE EAR.toon",
+      "sha256": "f3e9d1a528c043b4ff2ee1552a1a2063951a746574af91163d4b3368615f9ddb"
+    },
+    {
+      "filename": "XEROPHTHALMIA.toon",
+      "sha256": "c2c67319b213922abb6b2b13848d20297b712b24a9ba7e24c211d20aea6f93f1"
+    }
+  ]
+}
