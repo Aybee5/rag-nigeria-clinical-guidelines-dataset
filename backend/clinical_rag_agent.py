@@ -1,6 +1,8 @@
-from typing import Any, Sequence
+import os
+from typing import AsyncIterator, Awaitable, Callable
 
-from agents import Agent
+from google import genai
+from google.genai import types
 
 
 CLINICAL_RAG_INSTRUCTIONS = """
@@ -41,9 +43,48 @@ Uncertainty policy:
 """.strip()
 
 
-def create_clinical_rag_agent(retrieval_tools: Sequence[Any]) -> Agent[Any]:
-    return Agent[Any](
-        name="clinical_rag_agent",
-        instructions=CLINICAL_RAG_INSTRUCTIONS,
-        tools=list(retrieval_tools),
-    )
+class ClinicalRAGAgent:
+    def __init__(self, model: str = "gemini-2.5-flash"):
+        self.name = "clinical_rag_agent"
+        self.instructions = CLINICAL_RAG_INSTRUCTIONS
+        self.model = model
+        api_key = os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            raise ValueError("GOOGLE_API_KEY environment variable is not set")
+        self.client = genai.Client(api_key=api_key)
+
+    async def stream_answer(
+        self, user_message: str, retrieved_context: str
+    ) -> AsyncIterator[str]:
+        prompt = (
+            f"{self.instructions}\n\n"
+            "Retrieved NSTG context:\n"
+            f"{retrieved_context}\n\n"
+            "User question:\n"
+            f"{user_message}\n\n"
+            "Answer using only the retrieved NSTG context where possible."
+        )
+
+        stream = await self.client.aio.models.generate_content_stream(
+            model=self.model,
+            contents=[prompt],
+            config=types.GenerateContentConfig(temperature=0.2),
+        )
+
+        async for chunk in stream:
+            text = getattr(chunk, "text", None)
+            if text:
+                yield text
+                print(f"{text}")  # Debug: print each streamed chunk
+        print("Completed streaming response from ClinicalRAGAgent.")
+        print("End of response.")
+        print("-" * 50)
+        print(
+            "Note: The above full response includes instructions and retrieved context for debugging purposes."
+        )
+
+
+def create_clinical_rag_agent(
+    retrieval_tool: Callable[[str, int], Awaitable[str]] | None = None,
+) -> ClinicalRAGAgent:
+    return ClinicalRAGAgent()

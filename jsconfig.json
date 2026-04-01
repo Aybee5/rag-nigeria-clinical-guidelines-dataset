@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "moduleResolution": "node",
+    "checkJs": false
+  },
+  "include": ["src/**/*", "backend/**/*", "evaluation/**/*"]
+}
