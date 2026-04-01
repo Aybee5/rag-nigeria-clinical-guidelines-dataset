@@ -28,35 +28,79 @@ export function ChatOpitons() {
   // const { max_tokens, apiKey, temperature, baseUrl, organizationId, top_p, model } = openai
   const { setAccount, setGeneral, setModel } = useOptions()
   return (
-    <div className={classnames(styles.config, 'flex-c-sb flex-column')}>
+    <div className={classnames(styles.config, "flex-c-sb flex-column")}>
       <ConfigHeader />
-      <div className={classnames(styles.inner, 'flex-1')}>
+      <div className={classnames(styles.inner, "flex-1")}>
         <Panel className={styles.panel} title="Account">
-          <Panel.Item title="avatar" desc="If selected,  will switch between different appearances following your system settings" icon="user">
+          <Panel.Item
+            title="avatar"
+            desc="If selected,  will switch between different appearances following your system settings"
+            icon="user"
+          >
             <Avatar src={account.avatar} />
           </Panel.Item>
-          <Panel.Item icon="setting" title="Personalized Name" desc="Personalize your AI pair programmer. You can rename your assistant to anything you responsibly prefer.">
-            <Input value={account.name} onChange={(val) => setAccount({ name: val })} placeholder="Personalize your AI pair programmer" />
+          <Panel.Item
+            icon="setting"
+            title="Personalized Name"
+            desc="Personalize your AI pair programmer. You can rename your assistant to anything you responsibly prefer."
+          >
+            <Input
+              value={account.name}
+              onChange={(val) => setAccount({ name: val })}
+              placeholder="Personalize your AI pair programmer"
+            />
           </Panel.Item>
         </Panel>
         <Panel className={styles.panel} title="General">
           {/* <Panel.Item title="Appearance" desc="If selected,  will switch between different appearances following your system settings" icon="config">
             <Switch label={theme} />
           </Panel.Item> */}
-          <Panel.Item icon="light" title="Theme Style" desc="Select interface style">
-            <Select value={general.theme} onChange={(val) => setGeneral({ theme: val })} options={themeOptions} placeholder="Select interface style" />
+          <Panel.Item
+            icon="light"
+            title="Theme Style"
+            desc="Select interface style"
+          >
+            <Select
+              value={general.theme}
+              onChange={(val) => setGeneral({ theme: val })}
+              options={themeOptions}
+              placeholder="Select interface style"
+            />
           </Panel.Item>
-          <Panel.Item icon="files" title="Send messages" desc="Want to make this keyboard shortcut a global one?">
-            <Select value={general.command} onChange={(val) => setGeneral({ sendCommand: val })} options={sendCommandOptions} placeholder="Select interface style" />
+          <Panel.Item
+            icon="files"
+            title="Send messages"
+            desc="Want to make this keyboard shortcut a global one?"
+          >
+            <Select
+              value={general.command}
+              onChange={(val) => setGeneral({ sendCommand: val })}
+              options={sendCommandOptions}
+              placeholder="Select interface style"
+            />
           </Panel.Item>
-          <Panel.Item icon="lang" title="Language" desc="Select interface language">
-            <Select value={general.language} onChange={val => setGeneral({ language: val })} options={languageOptions} placeholder="language" />
-          </Panel.Item>
-          <Panel.Item icon="config" title="FontSize" desc="userFace font size">
-            <Select value={general.size} onChange={val => setGeneral({ size: val })} options={sizeOptions} placeholder="OpenAI ApiKey" />
-          </Panel.Item>
+          {/* <Panel.Item
+            icon="lang"
+            title="Language"
+            desc="Select interface language"
+          >
+            <Select
+              value={general.language}
+              onChange={(val) => setGeneral({ language: val })}
+              options={languageOptions}
+              placeholder="language"
+            />
+          </Panel.Item> */}
+          {/* <Panel.Item icon="config" title="FontSize" desc="userFace font size">
+            <Select
+              value={general.size}
+              onChange={(val) => setGeneral({ size: val })}
+              options={sizeOptions}
+              placeholder="OpenAI ApiKey"
+            />
+          </Panel.Item> */}
         </Panel>
-        <Panel className={styles.panel} title="Global OpenAI Config">
+        {/* <Panel className={styles.panel} title="Global OpenAI Config">
           <Panel.Item title="API Key" desc="Custom openai.com API Key" icon="key">
             <Input value={openai.apiKey} autoComplete="new-password" onChange={val => setModel({ apiKey: val })} placeholder="ApiKey" type="password" />
           </Panel.Item>
@@ -78,8 +122,8 @@ export function ChatOpitons() {
           <Panel.Item icon="link" title="Top P" desc="Custom top_p.">
             <Input type="number" value={openai.top_p} placeholder="Custom top_p." onChange={val => setModel({ top_p: +val })} />
           </Panel.Item>
-        </Panel>
+        </Panel> */}
       </div>
     </div>
-  )
+  );
 }
