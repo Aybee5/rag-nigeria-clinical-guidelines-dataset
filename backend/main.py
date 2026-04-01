@@ -1,21 +1,13 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
 import json
-from openai import AsyncOpenAI
-from openai.types.responses import ResponseTextDeltaEvent
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from pydantic import BaseModel
-from contextlib import asynccontextmanager
 import traceback
-from agents import set_default_openai_key, set_tracing_export_api_key, set_tracing_disabled, enable_verbose_stdout_logging, set_default_openai_client
-from openai import OpenAI
-
-# Updated imports for the Agents SDK
-from agents import Runner, function_tool, ItemHelpers
-from agents.run import RunConfig
 from fastapi.responses import StreamingResponse
 from clinical_rag_agent import create_clinical_rag_agent
 from rag_processing import (
@@ -41,36 +33,14 @@ COLLECTION_NAME = "Incidents"
 
 # Global variables
 mongodb_client = None
-openai_client = None
 clinical_chunks = None
 
-# Get the API key
-api_key = os.getenv("OPENAI_API_KEY")
+google_api_key = os.getenv("GOOGLE_API_KEY")
 
-client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY"),
-)
+if not google_api_key:
+    print("WARNING: GOOGLE_API_KEY environment variable is not set!")
+    print("Clinical RAG chat endpoint will fail until GOOGLE_API_KEY is configured.")
 
-if not api_key:
-    print("WARNING: OPENAI_API_KEY environment variable is not set!")
-    print("Tool calls and agent functionality may not work correctly.")
-
-# Set up the API key for both the OpenAI client and tracing
-if api_key:
-    # This will set the key for both LLM requests and tracing
-    set_default_openai_key(api_key, use_for_tracing=True)
-
-    # Also explicitly set it for tracing to be sure
-    set_tracing_export_api_key(api_key)
-
-    # Enable verbose logging for debugging
-    enable_verbose_stdout_logging()
-
-    print("OpenAI API key configured for both client and tracing")
-else:
-    # Disable tracing if no API key is available
-    set_tracing_disabled(True)
-    print("Tracing disabled due to missing API key")
 
 # @asynccontextmanager
 # async def lifespan(app: FastAPI):
@@ -78,15 +48,15 @@ else:
 #     try:
 #         mongodb_client = MongoClient(
 #             MONGODB_URI,
-#             server_api=ServerApi('1'),
+#             server_api=ServerApi("1"),
 #             maxPoolSize=5,
 #             minPoolSize=1,
 #             maxIdleTimeMS=30000,
 #             retryWrites=True,
 #             connectTimeoutMS=5000,
-#             serverSelectionTimeoutMS=5000
+#             serverSelectionTimeoutMS=5000,
 #         )
-#         mongodb_client.admin.command('ping')
+#         mongodb_client.admin.command("ping")
 #         print("Connected to MongoDB!")
 
 #         # Initialize the AsyncOpenAI client with the API key
@@ -115,6 +85,7 @@ else:
 #             mongodb_client.close()
 #             print("Closed MongoDB connection")
 
+
 app = FastAPI()
 
 app.add_middleware(
@@ -133,7 +104,6 @@ app.add_middleware(
 # ---------------------------
 # Tool Functions Using function_tool Decorator
 # ---------------------------
-@function_tool
 async def retrieve_clinical_context(query: str, limit: int = 5) -> str:
     """Retrieve top matching NSTG clinical chunks for a user query."""
     global clinical_chunks
@@ -162,42 +132,25 @@ async def retrieve_clinical_context(query: str, limit: int = 5) -> str:
 async def chat_endpoint(request: MessageRequest):
     try:
         # Create the clinical RAG agent
-        clinical_agent = create_clinical_rag_agent([retrieve_clinical_context])
-
-        # Configure the run with tracing disabled
-        run_config = RunConfig(
-            workflow_name="Clinical RAG",
-            model="gemini-2.5-flash",
-            tracing_disabled=False,
-        )
+        clinical_agent = create_clinical_rag_agent(retrieve_clinical_context)
 
         async def generate():
             try:
-                # Run the agent with streaming
-                result = Runner.run_streamed(
-                    starting_agent=clinical_agent,
-                    input=request.message,
-                    max_turns=10,
-                    run_config=run_config,
-                )
+                # Always retrieve clinical context first
+                yield f"data: {json.dumps({'tool': 'retrieve_clinical_context'})}\n\n"
+                context = await retrieve_clinical_context(request.message, limit=5)
+                yield f"data: {json.dumps({'tool_output': context})}\n\n"
 
-                async for event in result.stream_events():
-                    if event.type == "raw_response_event" and isinstance(event.data, ResponseTextDeltaEvent):
-                        # Stream the raw response events directly
-                        yield f"data: {json.dumps({'content': event.data.delta})}\n\n"
-                    elif event.type == "run_item_stream_event":
-                        if event.item.type == "tool_call_item":
-                            # Notify about tool usage
-                            yield f"data: {json.dumps({'tool': 'Tool was called'})}\n\n"
-                        elif event.item.type == "tool_call_output_item":
-                            # Send tool outputs
-                            yield f"data: {json.dumps({'tool_output': event.item.output})}\n\n"
-                        elif event.item.type == "message_output_item":
-                            # Send complete messages using ItemHelpers
-                            yield f"data: {json.dumps({'message': ItemHelpers.text_message_output(event.item)})}\n\n"
-                    elif event.type == "agent_updated_stream_event":
-                        # Notify about agent changes
-                        yield f"data: {json.dumps({'agent_update': event.new_agent.name})}\n\n"
+                streamed_chunks = []
+                async for delta in clinical_agent.stream_answer(
+                    request.message, context
+                ):
+                    streamed_chunks.append(delta)
+                    yield f"data: {json.dumps({'content': delta})}\n\n"
+
+                full_message = "".join(streamed_chunks).strip()
+                if full_message:
+                    yield f"data: {json.dumps({'message': full_message})}\n\n"
 
                 yield "data: [DONE]\n\n"
 
