@@ -1,6 +1,5 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
-from functools import lru_cache
 from pathlib import Path, PurePosixPath
 from typing import Generator
 
@@ -60,7 +59,6 @@ FRONTEND_DIST_DIR = Path(
 FRONTEND_STATIC_FILES = StaticFiles(directory=str(FRONTEND_DIST_DIR), check_dir=False)
 
 
-@lru_cache(maxsize=1)
 def get_api_prefixes() -> set[str]:
     prefixes = set()
     for route in app.routes:
@@ -338,6 +336,9 @@ def health_check(db: Session = Depends(get_db)):
         return {"status": "unhealthy", "error": str(e)}
 
 
+API_PREFIXES = get_api_prefixes()
+
+
 @app.get("/", include_in_schema=False)
 def serve_frontend_index():
     index_path = FRONTEND_DIST_DIR / "index.html"
@@ -356,14 +357,14 @@ async def serve_frontend_routes(full_path: str):
         if ".." in PurePosixPath(requested_path).parts:
             raise HTTPException(status_code=404, detail="Not found")
         first_segment = requested_path.split("/", 1)[0]
-        if first_segment in get_api_prefixes():
+        if first_segment in API_PREFIXES:
             raise HTTPException(status_code=404, detail="Not found")
 
         full_asset_path, stat_result = FRONTEND_STATIC_FILES.lookup_path(requested_path)
         if stat_result is not None:
             resolved_asset_path = Path(full_asset_path).resolve()
             try:
-                resolved_asset_path.relative_to(FRONTEND_DIST_DIR.resolve())
+                _ = resolved_asset_path.relative_to(FRONTEND_DIST_DIR.resolve())
             except ValueError:
                 raise HTTPException(status_code=404, detail="Not found")
             return FileResponse(resolved_asset_path)

@@ -23,11 +23,10 @@ RUN apt-get update \
 
 RUN pip install --no-cache-dir --upgrade pip uv
 
-COPY backend/pyproject.toml backend/uv.lock /app/backend/
+COPY backend /app/backend
 RUN cd /app/backend \
     && uv sync --frozen --no-dev
 
-COPY backend /app/backend
 COPY --from=frontend-builder /frontend/dist /app/dist
 
 WORKDIR /app/backend
