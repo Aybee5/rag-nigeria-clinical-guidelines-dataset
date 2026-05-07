@@ -56,6 +56,7 @@ FRONTEND_DIST_DIR = Path(
         str(Path(__file__).resolve().parent.parent / "dist"),
     )
 )
+FRONTEND_STATIC_FILES = StaticFiles(directory=str(FRONTEND_DIST_DIR), check_dir=False)
 
 google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
@@ -92,9 +93,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-app.mount("/static", StaticFiles(directory=str(FRONTEND_DIST_DIR / "static"), check_dir=False), name="static")
-
 
 # ---------------------------
 # DB/Auth dependencies
@@ -335,20 +333,15 @@ def serve_frontend_index():
 
 
 @app.get("/{full_path:path}", include_in_schema=False)
-def serve_frontend_routes(full_path: str):
+async def serve_frontend_routes(full_path: str, request: Request):
     if not FRONTEND_DIST_DIR.exists():
         raise HTTPException(status_code=404, detail="Frontend build not found")
 
-    requested_path = full_path.strip("/").lstrip("/")
+    requested_path = full_path.strip("/")
     if requested_path:
-        frontend_root = FRONTEND_DIST_DIR.resolve()
-        candidate = (FRONTEND_DIST_DIR / requested_path).resolve()
-        try:
-            candidate.relative_to(frontend_root)
-        except ValueError:
-            raise HTTPException(status_code=404, detail="Not found")
-        if candidate.is_file():
-            return FileResponse(candidate)
+        static_response = await FRONTEND_STATIC_FILES.get_response(requested_path, request.scope)
+        if static_response.status_code != 404:
+            return static_response
 
     index_path = FRONTEND_DIST_DIR / "index.html"
     if index_path.exists():
