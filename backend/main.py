@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Generator
 
 from fastapi import FastAPI, HTTPException, Depends, Request
@@ -57,6 +57,18 @@ FRONTEND_DIST_DIR = Path(
     )
 )
 FRONTEND_STATIC_FILES = StaticFiles(directory=str(FRONTEND_DIST_DIR), check_dir=False)
+
+
+def get_api_prefixes() -> set[str]:
+    prefixes = set()
+    for route in app.routes:
+        path = getattr(route, "path", "")
+        if not path:
+            continue
+        first_segment = path.strip("/").split("/", 1)[0]
+        if first_segment and not first_segment.startswith("{"):
+            prefixes.add(first_segment)
+    return prefixes
 
 google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
@@ -333,15 +345,21 @@ def serve_frontend_index():
 
 
 @app.get("/{full_path:path}", include_in_schema=False)
-async def serve_frontend_routes(full_path: str, request: Request):
+async def serve_frontend_routes(full_path: str):
     if not FRONTEND_DIST_DIR.exists():
         raise HTTPException(status_code=404, detail="Frontend build not found")
 
     requested_path = full_path.strip("/")
     if requested_path:
-        static_response = await FRONTEND_STATIC_FILES.get_response(requested_path, request.scope)
-        if static_response.status_code != 404:
-            return static_response
+        if ".." in PurePosixPath(requested_path).parts:
+            raise HTTPException(status_code=404, detail="Not found")
+        first_segment = requested_path.split("/", 1)[0]
+        if first_segment in get_api_prefixes():
+            raise HTTPException(status_code=404, detail="Not found")
+
+        full_asset_path, stat_result = FRONTEND_STATIC_FILES.lookup_path(requested_path)
+        if stat_result is not None:
+            return FileResponse(full_asset_path)
 
     index_path = FRONTEND_DIST_DIR / "index.html"
     if index_path.exists():
