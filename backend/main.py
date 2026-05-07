@@ -56,6 +56,13 @@ FRONTEND_DIST_DIR = Path(
         str(Path(__file__).resolve().parent.parent / "dist"),
     )
 )
+FRONTEND_FILES = {}
+if FRONTEND_DIST_DIR.exists():
+    FRONTEND_FILES = {
+        path.relative_to(FRONTEND_DIST_DIR).as_posix(): path
+        for path in FRONTEND_DIST_DIR.rglob("*")
+        if path.is_file()
+    }
 
 google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
@@ -341,13 +348,8 @@ def serve_frontend_routes(full_path: str):
         raise HTTPException(status_code=404, detail="Frontend build not found")
 
     requested_path = full_path.strip("/")
-    if requested_path:
-        frontend_root = FRONTEND_DIST_DIR.resolve()
-        candidate = (frontend_root / requested_path).resolve()
-        if frontend_root not in candidate.parents and candidate != frontend_root:
-            raise HTTPException(status_code=404, detail="Not found")
-        if candidate.is_file():
-            return FileResponse(candidate)
+    if requested_path and requested_path in FRONTEND_FILES:
+        return FileResponse(FRONTEND_FILES[requested_path])
 
     index_path = FRONTEND_DIST_DIR / "index.html"
     if index_path.exists():
