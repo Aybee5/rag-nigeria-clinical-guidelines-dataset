@@ -1,0 +1,17 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rag-nigeria-backend
+    ports:
+      - "8000:8000"
+    environment:
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      DATABASE_URL: sqlite:////app/data/clinical_rag.db
+    volumes:
+      - rag_backend_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  rag_backend_data:

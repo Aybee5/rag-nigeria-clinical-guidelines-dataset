@@ -16,6 +16,22 @@ For the Backend run:
   uvicorn main:app --reload
 ```
 
+## Docker deployment
+
+Create a `.env` file in the project root with your API key:
+
+```
+GOOGLE_API_KEY=your_google_api_key
+```
+
+Build and run the backend container:
+
+```
+docker compose up --build
+```
+
+The API will be available at `http://localhost:8000`.
+
 ## License
 
 The UI framework is open source under the MIT license. See the LICENSE file for more information.

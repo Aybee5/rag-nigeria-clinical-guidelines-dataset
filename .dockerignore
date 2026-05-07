@@ -1,0 +1,12 @@
+.git
+.gitignore
+node_modules
+npm-debug.log*
+pnpm-debug.log*
+backend/.venv
+backend/__pycache__
+backend/*.pyc
+dist
+coverage
+.vscode
+.idea
