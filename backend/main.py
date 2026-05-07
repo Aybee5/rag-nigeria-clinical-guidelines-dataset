@@ -1,14 +1,15 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, UploadFile, HTTPException
+from datetime import datetime
+from typing import Generator
+
+from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
-import json
-from pymongo import MongoClient
-from pymongo.server_api import ServerApi
 from pydantic import BaseModel
-import traceback
-from fastapi.responses import StreamingResponse
+from sqlalchemy import select, text
+from sqlalchemy.orm import Session
+
 from clinical_rag_agent import create_clinical_rag_agent
 from rag_processing import (
     ENCODED_DIR,
@@ -16,77 +17,60 @@ from rag_processing import (
     load_data_from_encoded,
     retrieve_similar_chunks,
 )
+from db import SessionLocal, init_db
+from models import User, AuthToken, ChatConversation, ChatMessage
+from auth_utils import hash_password, verify_password, generate_token
 
 # ---------------------------
 # Pydantic models
 # ---------------------------
-class MessageRequest(BaseModel):
+class RegisterRequest(BaseModel):
+    email: str
+    password: str
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
+class CreateChatRequest(BaseModel):
+    title: str | None = "New Chat"
+
+
+class AskRequest(BaseModel):
     message: str
+
 
 # ---------------------------
 # Environment and Globals
 # ---------------------------
 load_dotenv()
-MONGODB_URI = os.getenv("MONGODB_URI")
-DB_NAME = "ChatMIM"
-COLLECTION_NAME = "Incidents"
-
-# Global variables
-mongodb_client = None
 clinical_chunks = None
 
 google_api_key = os.getenv("GOOGLE_API_KEY")
-
 if not google_api_key:
     print("WARNING: GOOGLE_API_KEY environment variable is not set!")
     print("Clinical RAG chat endpoint will fail until GOOGLE_API_KEY is configured.")
 
 
-# @asynccontextmanager
-# async def lifespan(app: FastAPI):
-#     global mongodb_client, openai_client, clinical_chunks
-#     try:
-#         mongodb_client = MongoClient(
-#             MONGODB_URI,
-#             server_api=ServerApi("1"),
-#             maxPoolSize=5,
-#             minPoolSize=1,
-#             maxIdleTimeMS=30000,
-#             retryWrites=True,
-#             connectTimeoutMS=5000,
-#             serverSelectionTimeoutMS=5000,
-#         )
-#         mongodb_client.admin.command("ping")
-#         print("Connected to MongoDB!")
-
-#         # Initialize the AsyncOpenAI client with the API key
-#         api_key = os.getenv("OPENAI_API_KEY")
-#         if not api_key:
-#             raise ValueError("OPENAI_API_KEY environment variable is not set!")
-
-#         openai_client = AsyncOpenAI(api_key=api_key)
-
-#         # Set this client as the default for the Agents SDK
-#         set_default_openai_client(openai_client, use_for_tracing=True)
-
-#         # Initialize local clinical vector index and chunk metadata
-#         initialize_vector_database(ENCODED_DIR)
-#         clinical_chunks = load_data_from_encoded(ENCODED_DIR)
-#         print(f"Initialized clinical RAG index with {len(clinical_chunks)} chunks")
-
-#         print("Initialized AsyncOpenAI client and set as default for Agents SDK")
-
-#         yield
-#     except Exception as e:
-#         print(f"Startup error: {e}")
-#         raise
-#     finally:
-#         if mongodb_client:
-#             mongodb_client.close()
-#             print("Closed MongoDB connection")
+# ---------------------------
+# Lifespan
+# ---------------------------
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global clinical_chunks
+    try:
+        init_db()
+        initialize_vector_database(ENCODED_DIR)
+        clinical_chunks = load_data_from_encoded(ENCODED_DIR)
+        print(f"Initialized clinical RAG index with {len(clinical_chunks)} chunks")
+        yield
+    finally:
+        pass
 
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -102,10 +86,45 @@ app.add_middleware(
 
 
 # ---------------------------
-# Tool Functions Using function_tool Decorator
+# DB/Auth dependencies
+# ---------------------------
+def get_db() -> Generator[Session, None, None]:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+def get_current_user(request: Request, db: Session = Depends(get_db)) -> User:
+    auth_header = request.headers.get("Authorization", "")
+    if not auth_header.lower().startswith("bearer "):
+        raise HTTPException(status_code=401, detail="Missing bearer token")
+
+    token_value = auth_header.split(" ", 1)[1].strip()
+    if not token_value:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    token = db.scalar(select(AuthToken).where(AuthToken.token == token_value))
+    if not token:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    if token.expires_at <= datetime.utcnow():
+        db.delete(token)
+        db.commit()
+        raise HTTPException(status_code=401, detail="Token expired")
+
+    user = db.scalar(select(User).where(User.id == token.user_id))
+    if not user:
+        raise HTTPException(status_code=401, detail="User not found")
+
+    return user
+
+
+# ---------------------------
+# Clinical retrieval tool
 # ---------------------------
 async def retrieve_clinical_context(query: str, limit: int = 5) -> str:
-    """Retrieve top matching NSTG clinical chunks for a user query."""
     global clinical_chunks
 
     if clinical_chunks is None:
@@ -126,129 +145,171 @@ async def retrieve_clinical_context(query: str, limit: int = 5) -> str:
 
 
 # ---------------------------
-# Chat Endpoint Using Runner
+# Auth Routes
 # ---------------------------
-@app.post("/chat")
-async def chat_endpoint(request: MessageRequest):
-    try:
-        # Create the clinical RAG agent
-        clinical_agent = create_clinical_rag_agent(retrieve_clinical_context)
+@app.post("/auth/register")
+def register(request: RegisterRequest, db: Session = Depends(get_db)):
+    if len(request.password) < 8:
+        raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
 
-        async def generate():
-            try:
-                # Always retrieve clinical context first
-                yield f"data: {json.dumps({'tool': 'retrieve_clinical_context'})}\n\n"
-                context = await retrieve_clinical_context(request.message, limit=5)
-                yield f"data: {json.dumps({'tool_output': context})}\n\n"
+    existing = db.scalar(select(User).where(User.email == request.email.lower().strip()))
+    if existing:
+        raise HTTPException(status_code=409, detail="Email already exists")
 
-                streamed_chunks = []
-                async for delta in clinical_agent.stream_answer(
-                    request.message, context
-                ):
-                    streamed_chunks.append(delta)
-                    yield f"data: {json.dumps({'content': delta})}\n\n"
+    user = User(
+        email=request.email.lower().strip(),
+        password_hash=hash_password(request.password),
+    )
+    db.add(user)
+    db.commit()
+    db.refresh(user)
 
-                full_message = "".join(streamed_chunks).strip()
-                if full_message:
-                    yield f"data: {json.dumps({'message': full_message})}\n\n"
+    return {"id": user.id, "email": user.email, "created_at": user.created_at.isoformat()}
 
-                yield "data: [DONE]\n\n"
 
-            except Exception as e:
-                print(f"Agent execution error: {str(e)}")
-                traceback.print_exc()
-                yield f"data: {json.dumps({'error': str(e)})}\n\n"
-                yield "data: [DONE]\n\n"
+@app.post("/auth/login")
+def login(request: LoginRequest, db: Session = Depends(get_db)):
+    user = db.scalar(select(User).where(User.email == request.email.lower().strip()))
+    if not user or not verify_password(request.password, user.password_hash):
+        raise HTTPException(status_code=401, detail="Invalid credentials")
 
-        return StreamingResponse(
-            generate(),
-            media_type="text/event-stream"
-        )
+    token_value = generate_token()
+    token = AuthToken(user_id=user.id, token=token_value)
+    db.add(token)
+    db.commit()
 
-    except Exception as e:
-        print(f"Chat error: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+    return {
+        "access_token": token_value,
+        "token_type": "bearer",
+        "user": {"id": user.id, "email": user.email},
+    }
+
+
+@app.post("/auth/logout")
+def logout(request: Request, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    auth_header = request.headers.get("Authorization", "")
+    token_value = auth_header.split(" ", 1)[1].strip()
+    token = db.scalar(select(AuthToken).where(AuthToken.token == token_value))
+    if token:
+        db.delete(token)
+        db.commit()
+    return {"success": True}
+
+
+@app.get("/users/me")
+def me(current_user: User = Depends(get_current_user)):
+    return {
+        "id": current_user.id,
+        "email": current_user.email,
+        "created_at": current_user.created_at.isoformat(),
+    }
+
 
 # ---------------------------
-# Endpoints for Health and Incidents
+# Chat Routes
+# ---------------------------
+@app.post("/chats")
+def create_chat(
+    request: CreateChatRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    chat = ChatConversation(
+        user_id=current_user.id,
+        title=(request.title or "New Chat").strip() or "New Chat",
+    )
+    db.add(chat)
+    db.commit()
+    db.refresh(chat)
+
+    return {"id": chat.id, "title": chat.title, "created_at": chat.created_at.isoformat()}
+
+
+@app.get("/chats")
+def list_chats(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    chats = db.scalars(
+        select(ChatConversation)
+        .where(ChatConversation.user_id == current_user.id)
+        .order_by(ChatConversation.created_at.desc())
+    ).all()
+
+    return [
+        {"id": c.id, "title": c.title, "created_at": c.created_at.isoformat()}
+        for c in chats
+    ]
+
+
+@app.get("/chats/{chat_id}/messages")
+def get_chat_messages(chat_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    chat = db.scalar(select(ChatConversation).where(ChatConversation.id == chat_id))
+    if not chat or chat.user_id != current_user.id:
+        raise HTTPException(status_code=404, detail="Chat not found")
+
+    messages = db.scalars(
+        select(ChatMessage)
+        .where(ChatMessage.chat_id == chat_id)
+        .order_by(ChatMessage.created_at.asc())
+    ).all()
+
+    return {
+        "chat": {"id": chat.id, "title": chat.title},
+        "messages": [
+            {
+                "id": m.id,
+                "role": m.role,
+                "content": m.content,
+                "created_at": m.created_at.isoformat(),
+            }
+            for m in messages
+        ],
+    }
+
+
+@app.post("/chats/{chat_id}/ask")
+async def ask_chat(
+    chat_id: int,
+    request: AskRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    chat = db.scalar(select(ChatConversation).where(ChatConversation.id == chat_id))
+    if not chat or chat.user_id != current_user.id:
+        raise HTTPException(status_code=404, detail="Chat not found")
+
+    clinical_agent = create_clinical_rag_agent(retrieve_clinical_context)
+
+    context = await retrieve_clinical_context(request.message, limit=5)
+    parts = []
+    async for delta in clinical_agent.stream_answer(request.message, context):
+        parts.append(delta)
+
+    answer = "".join(parts).strip()
+
+    db.add(ChatMessage(chat_id=chat.id, role="user", content=request.message))
+    db.add(ChatMessage(chat_id=chat.id, role="assistant", content=answer))
+    db.commit()
+
+    return {"chat_id": chat.id, "answer": answer}
+
+
+@app.delete("/chats/{chat_id}")
+def delete_chat(chat_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    chat = db.scalar(select(ChatConversation).where(ChatConversation.id == chat_id))
+    if not chat or chat.user_id != current_user.id:
+        raise HTTPException(status_code=404, detail="Chat not found")
+
+    db.delete(chat)
+    db.commit()
+    return {"success": True}
+
+
+# ---------------------------
+# Health
 # ---------------------------
 @app.get("/health")
-async def health_check():
+def health_check(db: Session = Depends(get_db)):
     try:
-        mongodb_client.admin.command('ping')
+        db.execute(text("SELECT 1"))
         return {"status": "healthy", "database": "connected"}
     except Exception as e:
         return {"status": "unhealthy", "error": str(e)}
-
-@app.get("/incidents")
-async def get_incidents(skip: int = 0, limit: int = 10):
-    try:
-        collection = mongodb_client[DB_NAME][COLLECTION_NAME]
-
-        # First get total count of unique documents
-        count_pipeline = [
-            {
-                "$group": {
-                    "_id": "$metadata.filename"
-                }
-            },
-            {
-                "$count": "total"
-            }
-        ]
-
-        total_count_result = list(collection.aggregate(count_pipeline))
-        total_count = total_count_result[0]['total'] if total_count_result else 0
-
-        # Get paginated unique documents
-        pipeline = [
-            {
-                "$group": {
-                    "_id": "$metadata.filename",
-                    "metadata": {"$first": "$metadata"},
-                    "count": {"$sum": 1}
-                }
-            },
-            {
-                "$project": {
-                    "_id": 0,
-                    "metadata": 1,
-                    "count": 1
-                }
-            },
-            {
-                "$skip": skip
-            },
-            {
-                "$limit": limit
-            }
-        ]
-
-        unique_documents = list(collection.aggregate(pipeline))
-
-        # Format the response to match what the frontend expects
-        formatted_documents = []
-        for doc in unique_documents:
-            if doc.get('metadata'):
-                formatted_documents.append({
-                    "metadata": {
-                        "filename": doc['metadata'].get('filename'),
-                        "preview_image": doc['metadata'].get('preview_image'),
-                        "file_type": doc['metadata'].get('file_type'),
-                        "upload_timestamp": doc['metadata'].get('upload_timestamp'),
-                        "embedding_count": doc.get('count', 0)
-                    }
-                })
-
-        # Return paginated response with metadata
-        return {
-            "documents": formatted_documents,
-            "total": total_count,
-            "skip": skip,
-            "limit": limit,
-            "has_more": (skip + limit) < total_count
-        }
-
-    except Exception as e:
-        print(f"Error fetching incidents: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
