@@ -93,6 +93,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+if (FRONTEND_DIST_DIR / "static").exists():
+    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIST_DIR / "static")), name="static")
+
 
 # ---------------------------
 # DB/Auth dependencies
@@ -324,10 +327,6 @@ def health_check(db: Session = Depends(get_db)):
         return {"status": "unhealthy", "error": str(e)}
 
 
-if (FRONTEND_DIST_DIR / "static").exists():
-    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIST_DIR / "static")), name="static")
-
-
 @app.get("/", include_in_schema=False)
 def serve_frontend_index():
     index_path = FRONTEND_DIST_DIR / "index.html"
@@ -343,7 +342,10 @@ def serve_frontend_routes(full_path: str):
 
     requested_path = full_path.strip("/")
     if requested_path:
-        candidate = FRONTEND_DIST_DIR / requested_path
+        frontend_root = FRONTEND_DIST_DIR.resolve()
+        candidate = (frontend_root / requested_path).resolve()
+        if frontend_root not in candidate.parents and candidate != frontend_root:
+            raise HTTPException(status_code=404, detail="Not found")
         if candidate.is_file():
             return FileResponse(candidate)
 

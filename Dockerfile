@@ -3,9 +3,7 @@ FROM node:20-alpine AS frontend-builder
 WORKDIR /frontend
 
 COPY package.json ./
-COPY package-lock.json* ./
-
-RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
+RUN npm install
 
 COPY . .
 RUN npm run build
