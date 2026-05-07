@@ -21,10 +21,11 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-COPY backend/requirements.txt /app/backend/requirements.txt
+RUN pip install --no-cache-dir --upgrade pip uv
 
-RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir -r /app/backend/requirements.txt
+COPY backend/pyproject.toml backend/uv.lock /app/backend/
+RUN cd /app/backend \
+    && uv sync --frozen --no-dev
 
 COPY backend /app/backend
 COPY --from=frontend-builder /frontend/dist /app/dist
@@ -33,4 +34,4 @@ WORKDIR /app/backend
 
 EXPOSE 8000
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

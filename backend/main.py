@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 from typing import Generator
 
 from fastapi import FastAPI, HTTPException, Depends, Request
@@ -56,13 +56,6 @@ FRONTEND_DIST_DIR = Path(
         str(Path(__file__).resolve().parent.parent / "dist"),
     )
 )
-FRONTEND_FILES = {}
-if FRONTEND_DIST_DIR.exists():
-    FRONTEND_FILES = {
-        path.relative_to(FRONTEND_DIST_DIR).as_posix(): path
-        for path in FRONTEND_DIST_DIR.rglob("*")
-        if path.is_file()
-    }
 
 google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
@@ -100,8 +93,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-if (FRONTEND_DIST_DIR / "static").exists():
-    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIST_DIR / "static")), name="static")
+app.mount("/static", StaticFiles(directory=str(FRONTEND_DIST_DIR / "static"), check_dir=False), name="static")
 
 
 # ---------------------------
@@ -347,14 +339,16 @@ def serve_frontend_routes(full_path: str):
     if not FRONTEND_DIST_DIR.exists():
         raise HTTPException(status_code=404, detail="Frontend build not found")
 
-    requested_path = full_path.strip("/")
-    first_segment = requested_path.split("/", 1)[0] if requested_path else ""
-    if first_segment in {"auth", "users", "chats", "health", "docs", "redoc", "openapi.json"}:
-        raise HTTPException(status_code=404, detail="Not found")
-    if ".." in PurePosixPath(requested_path).parts:
-        raise HTTPException(status_code=404, detail="Not found")
-    if requested_path and requested_path in FRONTEND_FILES:
-        return FileResponse(FRONTEND_FILES[requested_path])
+    requested_path = full_path.strip("/").lstrip("/")
+    if requested_path:
+        frontend_root = FRONTEND_DIST_DIR.resolve()
+        candidate = (FRONTEND_DIST_DIR / requested_path).resolve()
+        try:
+            candidate.relative_to(frontend_root)
+        except ValueError:
+            raise HTTPException(status_code=404, detail="Not found")
+        if candidate.is_file():
+            return FileResponse(candidate)
 
     index_path = FRONTEND_DIST_DIR / "index.html"
     if index_path.exists():

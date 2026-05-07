@@ -12,7 +12,8 @@ Simply clone the repository, install the dependencies, and run the development s
 For the Backend run:
 ```
   cd backend
-  pip install -r requirements.txt
+  uv sync
+  source .venv/bin/activate
   uvicorn main:app --reload
 ```
 
