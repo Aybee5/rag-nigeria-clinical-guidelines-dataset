@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path, PurePosixPath
 from typing import Generator
 
@@ -59,6 +60,7 @@ FRONTEND_DIST_DIR = Path(
 FRONTEND_STATIC_FILES = StaticFiles(directory=str(FRONTEND_DIST_DIR), check_dir=False)
 
 
+@lru_cache(maxsize=1)
 def get_api_prefixes() -> set[str]:
     prefixes = set()
     for route in app.routes:
@@ -359,7 +361,12 @@ async def serve_frontend_routes(full_path: str):
 
         full_asset_path, stat_result = FRONTEND_STATIC_FILES.lookup_path(requested_path)
         if stat_result is not None:
-            return FileResponse(full_asset_path)
+            resolved_asset_path = Path(full_asset_path).resolve()
+            try:
+                resolved_asset_path.relative_to(FRONTEND_DIST_DIR.resolve())
+            except ValueError:
+                raise HTTPException(status_code=404, detail="Not found")
+            return FileResponse(resolved_asset_path)
 
     index_path = FRONTEND_DIST_DIR / "index.html"
     if index_path.exists():
