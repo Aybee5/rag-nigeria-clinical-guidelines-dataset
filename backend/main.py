@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Generator
 
 from fastapi import FastAPI, HTTPException, Depends, Request
@@ -348,6 +348,11 @@ def serve_frontend_routes(full_path: str):
         raise HTTPException(status_code=404, detail="Frontend build not found")
 
     requested_path = full_path.strip("/")
+    first_segment = requested_path.split("/", 1)[0] if requested_path else ""
+    if first_segment in {"auth", "users", "chats", "health", "docs", "redoc", "openapi.json"}:
+        raise HTTPException(status_code=404, detail="Not found")
+    if ".." in PurePosixPath(requested_path).parts:
+        raise HTTPException(status_code=404, detail="Not found")
     if requested_path and requested_path in FRONTEND_FILES:
         return FileResponse(FRONTEND_FILES[requested_path])
 
