@@ -16,7 +16,7 @@ For the Backend run:
   uvicorn main:app --reload
 ```
 
-## Docker deployment
+## Docker deployment (single container for frontend + backend)
 
 Create a `.env` file in the project root with your API key:
 
@@ -24,13 +24,15 @@ Create a `.env` file in the project root with your API key:
 GOOGLE_API_KEY=your_google_api_key
 ```
 
-Build and run the backend container:
+Build and run the application container:
 
 ```
 docker compose up --build
 ```
 
-The API will be available at `http://localhost:8000`.
+The app will be available at `http://localhost:8000`:
+- Frontend UI is served from `/`
+- Backend API is served from the same host (e.g. `/health`, `/auth/*`, `/chats/*`)
 
 ## License
 

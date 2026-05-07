@@ -1,9 +1,9 @@
 services:
-  backend:
+  app:
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile
-    container_name: rag-nigeria-backend
+    container_name: rag-nigeria-app
     ports:
       - "8000:8000"
     environment:

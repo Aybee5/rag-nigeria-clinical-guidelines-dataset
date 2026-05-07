@@ -1,9 +1,12 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
+from pathlib import Path
 from typing import Generator
 
 from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 import os
 from pydantic import BaseModel
@@ -47,6 +50,12 @@ class AskRequest(BaseModel):
 # ---------------------------
 load_dotenv()
 clinical_chunks = None
+FRONTEND_DIST_DIR = Path(
+    os.getenv(
+        "FRONTEND_DIST_DIR",
+        str(Path(__file__).resolve().parent.parent / "dist"),
+    )
+)
 
 google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
@@ -313,3 +322,32 @@ def health_check(db: Session = Depends(get_db)):
         return {"status": "healthy", "database": "connected"}
     except Exception as e:
         return {"status": "unhealthy", "error": str(e)}
+
+
+if (FRONTEND_DIST_DIR / "static").exists():
+    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIST_DIR / "static")), name="static")
+
+
+@app.get("/", include_in_schema=False)
+def serve_frontend_index():
+    index_path = FRONTEND_DIST_DIR / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    raise HTTPException(status_code=404, detail="Frontend build not found")
+
+
+@app.get("/{full_path:path}", include_in_schema=False)
+def serve_frontend_routes(full_path: str):
+    if not FRONTEND_DIST_DIR.exists():
+        raise HTTPException(status_code=404, detail="Frontend build not found")
+
+    requested_path = full_path.strip("/")
+    if requested_path:
+        candidate = FRONTEND_DIST_DIR / requested_path
+        if candidate.is_file():
+            return FileResponse(candidate)
+
+    index_path = FRONTEND_DIST_DIR / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    raise HTTPException(status_code=404, detail="Frontend build not found")
