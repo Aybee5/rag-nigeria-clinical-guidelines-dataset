@@ -1,5 +1,5 @@
 export const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://rag-chat-ui-backend.onrender.com'  // render deployed backend address (prod)
+  ? 'http://localhost:8000'  // render deployed backend address (prod)
   : 'http://localhost:8000';
 
 export async function uploadFiles(files) {
@@ -49,7 +49,7 @@ export async function getIncidents(skip = 0, limit = 10) {
 
 export async function getContext(message, onMessage, onError, onEnd) {
   try {
-    const response = await fetch(`${API_URL}/chat`, {
+    const response = await fetch(`${API_URL}/chats`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
