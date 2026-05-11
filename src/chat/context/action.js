@@ -1,8 +1,7 @@
 import { createNewChat, askQuestion, deleteChat } from "../service/api";
+import { isServerChatId } from "./chatId";
 
 export default function action(state, dispatch) {
-  const isServerChatId = (id) => Number.isInteger(id) && id > 0 && id < 1_000_000_000;
-
   const setState = (payload = {}) =>
     dispatch({
       type: "SET_STATE",

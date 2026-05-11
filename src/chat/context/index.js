@@ -9,12 +9,12 @@ import action from "./action";
 import reducer from "./reducer";
 import { initState } from "./initState";
 import { getAllChats, getChatHistory } from "../service/api";
+import { isServerChatId } from "./chatId";
 
 export const ChatContext = createContext(null);
 export const MessagesContext = createContext(null);
 
 export const ChatProvider = ({ children }) => {
-  const isServerChatId = (id) => Number.isInteger(id) && id > 0 && id < 1_000_000_000;
   const init = JSON.parse(localStorage.getItem("SESSIONS")) || initState;
   const [state, dispatch] = useReducer(reducer, init);
   const actionList = action(state, dispatch);
