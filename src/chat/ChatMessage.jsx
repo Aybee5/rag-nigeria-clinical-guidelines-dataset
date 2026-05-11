@@ -156,9 +156,9 @@ export function MessageBar() {
               />
             </Tooltip>
           )}
-          <Tooltip text="Voice input">
+          {/* <Tooltip text="Voice input">
             <AudioRecorder onTranscription={handleTranscription} />
-          </Tooltip>
+          </Tooltip> */}
           <Icon className={styles.icon} type="send" onClick={sendMessage} />
         </div>
       </div>

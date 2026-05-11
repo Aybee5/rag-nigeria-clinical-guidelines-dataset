@@ -32,6 +32,7 @@ Response style:
 - Then provide concise sections when needed: Assessment, Recommended Actions, Monitoring/Follow-up.
 - Use bullet points for treatment and investigations.
 - If retrieved sources are available, end with a short "Sources" list using document titles/filenames.
+- You don't need to always mention "Based on the retrieved NSTG context..." but ensure all information is grounded in it.
 
 Scope policy:
 - Treat NSTG 2022 as the primary authority for this assistant.
@@ -75,13 +76,13 @@ class ClinicalRAGAgent:
             text = getattr(chunk, "text", None)
             if text:
                 yield text
-                print(f"{text}")  # Debug: print each streamed chunk
-        print("Completed streaming response from ClinicalRAGAgent.")
-        print("End of response.")
-        print("-" * 50)
-        print(
-            "Note: The above full response includes instructions and retrieved context for debugging purposes."
-        )
+        #         print(f"{text}")  # Debug: print each streamed chunk
+        # print("Completed streaming response from ClinicalRAGAgent.")
+        # print("End of response.")
+        # print("-" * 50)
+        # print(
+        #     "Note: The above full response includes instructions and retrieved context for debugging purposes."
+        # )
 
 
 def create_clinical_rag_agent(

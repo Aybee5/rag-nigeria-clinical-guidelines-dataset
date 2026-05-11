@@ -1,9 +1,13 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
+from pathlib import Path, PurePosixPath
 from typing import Generator
+import json
 
 from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 import os
 from pydantic import BaseModel
@@ -35,7 +39,7 @@ class LoginRequest(BaseModel):
 
 
 class CreateChatRequest(BaseModel):
-    title: str | None = "New Chat"
+    title: str | None = None
 
 
 class AskRequest(BaseModel):
@@ -47,6 +51,25 @@ class AskRequest(BaseModel):
 # ---------------------------
 load_dotenv()
 clinical_chunks = None
+FRONTEND_DIST_DIR = Path(
+    os.getenv(
+        "FRONTEND_DIST_DIR",
+        str(Path(__file__).resolve().parent.parent / "dist"),
+    )
+)
+FRONTEND_STATIC_FILES = StaticFiles(directory=str(FRONTEND_DIST_DIR), check_dir=False)
+
+
+def get_api_prefixes() -> set[str]:
+    prefixes = set()
+    for route in app.routes:
+        path = getattr(route, "path", "")
+        if not path:
+            continue
+        first_segment = path.strip("/").split("/", 1)[0]
+        if first_segment and not first_segment.startswith("{"):
+            prefixes.add(first_segment)
+    return prefixes
 
 google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
@@ -83,7 +106,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # ---------------------------
 # DB/Auth dependencies
@@ -149,8 +171,10 @@ async def retrieve_clinical_context(query: str, limit: int = 5) -> str:
 # ---------------------------
 @app.post("/auth/register")
 def register(request: RegisterRequest, db: Session = Depends(get_db)):
-    if len(request.password) < 8:
-        raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
+    if len(request.password) < 6:
+        raise HTTPException(
+            status_code=400, detail="Password must be at least 6 characters"
+        )
 
     existing = db.scalar(select(User).where(User.email == request.email.lower().strip()))
     if existing:
@@ -216,14 +240,13 @@ def create_chat(
 ):
     chat = ChatConversation(
         user_id=current_user.id,
-        title=(request.title or "New Chat").strip() or "New Chat",
+        title=(request.title or "New Conversation").strip() or "New Conversation",
     )
     db.add(chat)
     db.commit()
     db.refresh(chat)
 
     return {"id": chat.id, "title": chat.title, "created_at": chat.created_at.isoformat()}
-
 
 @app.get("/chats")
 def list_chats(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
@@ -279,17 +302,42 @@ async def ask_chat(
     clinical_agent = create_clinical_rag_agent(retrieve_clinical_context)
 
     context = await retrieve_clinical_context(request.message, limit=5)
-    parts = []
-    async for delta in clinical_agent.stream_answer(request.message, context):
-        parts.append(delta)
 
-    answer = "".join(parts).strip()
+    # Fetch conversation history for context
+    previous_messages = db.scalars(
+        select(ChatMessage)
+        .where(ChatMessage.chat_id == chat_id)
+        .order_by(ChatMessage.created_at.asc())
+        .limit(4)
+    ).all()
+
+    # Build conversation context from previous messages
+    conversation_history = ""
+    if previous_messages:
+        conversation_history = "Previous conversation context:\n"
+        for msg in previous_messages[-4:]:  # Limit to last 4 messages for context
+            role = "User" if msg.role == "user" else "Assistant"
+            conversation_history += f"{role}: {msg.content}\n"
+        conversation_history += "\n"
 
     db.add(ChatMessage(chat_id=chat.id, role="user", content=request.message))
-    db.add(ChatMessage(chat_id=chat.id, role="assistant", content=answer))
     db.commit()
 
-    return {"chat_id": chat.id, "answer": answer}
+    async def stream_generator():
+        full_answer = ""
+        # Prepare enhanced message with conversation context
+        enhanced_message = f"{conversation_history}New user question: {request.message}"
+        async for delta in clinical_agent.stream_answer(enhanced_message, context):
+            full_answer += delta
+            yield f"data: {json.dumps({'content': delta})}\n\n"
+
+        db.add(
+            ChatMessage(chat_id=chat.id, role="assistant", content=full_answer.strip())
+        )
+        db.commit()
+        yield f"data: {json.dumps({'message': full_answer.strip()})}\n\n"
+
+    return StreamingResponse(stream_generator(), media_type="text/event-stream")
 
 
 @app.delete("/chats/{chat_id}")
@@ -313,3 +361,42 @@ def health_check(db: Session = Depends(get_db)):
         return {"status": "healthy", "database": "connected"}
     except Exception as e:
         return {"status": "unhealthy", "error": str(e)}
+
+
+API_PREFIXES = get_api_prefixes()
+
+
+@app.get("/", include_in_schema=False)
+def serve_frontend_index():
+    index_path = FRONTEND_DIST_DIR / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    raise HTTPException(status_code=404, detail="Frontend build not found")
+
+
+@app.get("/{full_path:path}", include_in_schema=False)
+async def serve_frontend_routes(full_path: str):
+    if not FRONTEND_DIST_DIR.exists():
+        raise HTTPException(status_code=404, detail="Frontend build not found")
+
+    requested_path = full_path.strip("/")
+    if requested_path:
+        if ".." in PurePosixPath(requested_path).parts:
+            raise HTTPException(status_code=404, detail="Not found")
+        first_segment = requested_path.split("/", 1)[0]
+        if first_segment in API_PREFIXES:
+            raise HTTPException(status_code=404, detail="Not found")
+
+        full_asset_path, stat_result = FRONTEND_STATIC_FILES.lookup_path(requested_path)
+        if stat_result is not None:
+            resolved_asset_path = Path(full_asset_path).resolve()
+            try:
+                _ = resolved_asset_path.relative_to(FRONTEND_DIST_DIR.resolve())
+            except ValueError:
+                raise HTTPException(status_code=404, detail="Not found")
+            return FileResponse(resolved_asset_path)
+
+    index_path = FRONTEND_DIST_DIR / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    raise HTTPException(status_code=404, detail="Frontend build not found")
