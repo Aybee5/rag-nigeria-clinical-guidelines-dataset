@@ -170,8 +170,10 @@ async def retrieve_clinical_context(query: str, limit: int = 5) -> str:
 # ---------------------------
 @app.post("/auth/register")
 def register(request: RegisterRequest, db: Session = Depends(get_db)):
-    if len(request.password) < 8:
-        raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
+    if len(request.password) < 6:
+        raise HTTPException(
+            status_code=400, detail="Password must be at least 6 characters"
+        )
 
     existing = db.scalar(select(User).where(User.email == request.email.lower().strip()))
     if existing:
