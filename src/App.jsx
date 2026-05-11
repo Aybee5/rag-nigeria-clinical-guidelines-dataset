@@ -8,8 +8,6 @@ import './auth/style.less'
 function AuthGate() {
   const { user, loading } = useAuth()
   const [mode, setMode] = useState('login')
-  console.log(user, mode);
-  
 
   if (loading) return <div className="auth-loading">Loading…</div>
   if (user) return <div className="app-with-logout"><ChatApp /><LogoutBar /></div>
