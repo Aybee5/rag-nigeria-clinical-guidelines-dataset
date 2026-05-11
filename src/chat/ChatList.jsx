@@ -11,7 +11,7 @@ export function ListEmpty() {
       <Title type="h3">
         No conversations found
         <br />
-        Start a new conversation to begin storing them locally.
+        Start a new conversation to begin saving them to your account.
       </Title>
     </div>
   );
