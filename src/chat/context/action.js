@@ -1,6 +1,8 @@
 import { createNewChat, askQuestion, deleteChat } from "../service/api";
 
 export default function action(state, dispatch) {
+  const isServerChatId = (id) => Number.isInteger(id) && id > 0 && id < 1_000_000_000;
+
   const setState = (payload = {}) =>
     dispatch({
       type: "SET_STATE",
@@ -74,7 +76,7 @@ export default function action(state, dispatch) {
         const currentChatState = newChat[currentChat] || chat[currentChat];
         let activeChat = currentChatState;
 
-        if (!activeChat?.id || !Number.isInteger(activeChat.id)) {
+        if (!isServerChatId(activeChat?.id)) {
           const createdChat = await createNewChat(activeChat?.title || "New Conversation");
           activeChat = {
             ...currentChatState,
@@ -169,7 +171,7 @@ export default function action(state, dispatch) {
       const chat = [...state.chat];
       const chatToRemove = chat[index];
 
-      if (chatToRemove?.id && Number.isInteger(chatToRemove.id)) {
+      if (isServerChatId(chatToRemove?.id)) {
         try {
           await deleteChat(chatToRemove.id);
         } catch (error) {

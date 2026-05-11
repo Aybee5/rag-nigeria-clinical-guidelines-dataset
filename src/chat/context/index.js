@@ -14,6 +14,7 @@ export const ChatContext = createContext(null);
 export const MessagesContext = createContext(null);
 
 export const ChatProvider = ({ children }) => {
+  const isServerChatId = (id) => Number.isInteger(id) && id > 0 && id < 1_000_000_000;
   const init = JSON.parse(localStorage.getItem("SESSIONS")) || initState;
   const [state, dispatch] = useReducer(reducer, init);
   const actionList = action(state, dispatch);
@@ -79,7 +80,7 @@ export const ChatProvider = ({ children }) => {
     const currentChat = state.chat?.[state.currentChat];
 
     const loadCurrentChatHistory = async () => {
-      if (!currentChat?.id || loadedChatIds.current.has(currentChat.id)) {
+      if (!isServerChatId(currentChat?.id) || loadedChatIds.current.has(currentChat.id)) {
         return;
       }
 
