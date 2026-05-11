@@ -1,5 +1,4 @@
-import { fetchStream } from "../service";
-import { getContext } from "../service/api";
+import { createNewChat, askQuestion, deleteChat } from "../service/api";
 
 export default function action(state, dispatch) {
   const setState = (payload = {}) =>
@@ -22,42 +21,38 @@ export default function action(state, dispatch) {
       });
       return false;
     }
-    
+
     if (state.currentChat >= state.chat.length) {
       setState({ currentChat: state.chat.length - 1 });
       return false;
     }
-    
+
     return true;
   };
 
-  // Helper to get limited message history
-  const getLimitedMessageHistory = (messages, limit = 4) => {
-    if (!messages || messages.length === 0) return [];
-    
-    // Always include the latest message
-    const latestMessage = messages[messages.length - 1];
-    
-    // Get previous messages up to the limit
-    const previousMessages = messages.slice(-limit, -1);
-    
-    return [...previousMessages, latestMessage];
-  };
+  const toLocalChat = (chatData = {}) => ({
+    id: chatData.id ?? Date.now(),
+    title: chatData.title || "New Conversation",
+    ct: chatData.created_at || new Date().toISOString(),
+    messages: [],
+    icon: [2, "files"],
+  });
 
   return {
     setState,
     clearTypeing() {
-      setState({ 
+      setState({
         typeingMessage: { content: '' },
         is: { ...state.is, typeing: false }
       });
-    }, 
+    },
     async sendMessage() {
+
       if (!ensureValidChatState()) return;
-    
+
       const { typeingMessage, chat, is, currentChat } = state;
       if (!typeingMessage?.content) return;
-    
+
       try {
         // Store the original message in chat history
         const messages = [...(chat[currentChat].messages || []), {
@@ -76,18 +71,31 @@ export default function action(state, dispatch) {
         });
 
         let answer = '';
-        let currentTool = null;
-        
-        // Get streaming response from the chat endpoint
-        await getContext(
+        const currentChatState = newChat[currentChat] || chat[currentChat];
+        let activeChat = currentChatState;
+
+        if (!activeChat?.id || !Number.isInteger(activeChat.id)) {
+          const createdChat = await createNewChat(activeChat?.title || "New Conversation");
+          activeChat = {
+            ...currentChatState,
+            id: createdChat.id,
+            title: createdChat.title || currentChatState.title,
+            ct: createdChat.created_at || currentChatState.ct,
+          };
+          newChat[currentChat] = activeChat;
+          setState({ chat: newChat });
+        }
+
+        // Ask the backend for the selected chat id.
+        await askQuestion(
+          activeChat.id,
           typeingMessage.content,
           (data) => {
-            if (data.content) {
-              // Raw response content (token by token)
-              answer += data.content;
+            if (data.content || data.message || data.answer) {
+              answer += data.content || data.message || data.answer || "";
               if (!newChat[currentChat]) return;
               newChat[currentChat] = {
-                ...chat[currentChat],
+                ...newChat[currentChat],
                 messages: [
                   ...messages,
                   {
@@ -99,38 +107,7 @@ export default function action(state, dispatch) {
                 ],
               };
               setState({
-                is: { ...is, thinking: answer.length },
-                chat: newChat,
-              });
-            } else if (data.tool) {
-              // Tool usage notification
-              currentTool = data.tool;
-              // You could show a loading indicator for the specific tool here
-            } else if (data.tool_output) {
-              // Tool output received
-              currentTool = null;
-              // You could show the tool output in a different format here
-            } else if (data.agent_update) {
-              // Agent change notification
-              // You could show this in the UI if desired
-            } else if (data.message) {
-              // Complete message received
-              answer = data.message;
-              if (!newChat[currentChat]) return;
-              newChat[currentChat] = {
-                ...chat[currentChat],
-                messages: [
-                  ...messages,
-                  {
-                    content: answer,
-                    role: "assistant",
-                    sentTime: Date.now(),
-                    id: Date.now(),
-                  },
-                ],
-              };
-              setState({
-                is: { ...is, thinking: false },
+                is: { ...is, thinking: answer.length || false },
                 chat: newChat,
               });
             }
@@ -162,19 +139,15 @@ export default function action(state, dispatch) {
       }
     },
 
-    newChat() {
+    async newChat() {
       const { chat } = state;
-      const chatList = [
-        ...chat,
-        {
-          title: "New Conversation",
-          id: Date.now(),
-          messages: [],
-          ct: new Date().toISOString(),
-          icon: [2, "files"],
-        },
-      ];
-      setState({ chat: chatList, currentChat: chatList.length - 1 });
+      try {
+        const createdChat = await createNewChat("New Conversation");
+        const chatList = [...chat, toLocalChat(createdChat)];
+        setState({ chat: chatList, currentChat: chatList.length - 1 });
+      } catch (error) {
+        console.error('Create chat error:', error);
+      }
     },
 
     modifyChat(arg, index) {
@@ -190,12 +163,22 @@ export default function action(state, dispatch) {
       chat[index] = { ...chat[index], title };
       setState({ chat });
     },
-    
-    removeChat(index) {
+
+    async removeChat(index) {
       if (!ensureValidChatState()) return;
       const chat = [...state.chat];
+      const chatToRemove = chat[index];
+
+      if (chatToRemove?.id && Number.isInteger(chatToRemove.id)) {
+        try {
+          await deleteChat(chatToRemove.id);
+        } catch (error) {
+          console.error('Failed to delete chat from server:', error);
+        }
+      }
+
       chat.splice(index, 1);
-      
+
       if (chat.length === 0) {
         chat.push({
           title: "New Conversation",
@@ -205,7 +188,7 @@ export default function action(state, dispatch) {
           icon: [2, "files"],
         });
       }
-      
+
       setState({
         chat,
         currentChat: state.currentChat === index ? Math.max(0, index - 1) : state.currentChat
@@ -218,11 +201,11 @@ export default function action(state, dispatch) {
         content,
         id: Date.now(),
       };
-      setState({ 
-        is: { ...state.is, typeing: content !== '' }, 
-        typeingMessage 
+      setState({
+        is: { ...state.is, typeing: content !== '' },
+        typeingMessage
       });
-    },   
+    },
 
     clearMessage() {
       if (!ensureValidChatState()) return;
@@ -241,7 +224,7 @@ export default function action(state, dispatch) {
     },
 
     setOptions({ type, data = {} }) {
-      const options = { 
+      const options = {
         ...state.options,
         [type]: { ...state.options[type], ...data }
       };

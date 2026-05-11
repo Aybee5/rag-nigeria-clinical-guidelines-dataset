@@ -6,7 +6,6 @@ export function useClickOutside(ref, initialState) {
     if (ref?.current && !ref.current.contains(event.target)) {
       setVisible(false);
     }
-    console.log(event);
   };
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);

@@ -1,4 +1,4 @@
-export const API_URL = process.env.NODE_ENV === 'production' 
+export const API_URL = process.env.NODE_ENV === 'production'
   ? 'http://localhost:8000'  // render deployed backend address (prod)
   : 'http://localhost:8000';
 
@@ -11,6 +11,9 @@ export async function uploadFiles(files) {
   try {
     const response = await fetch(`${API_URL}/upload`, {
       method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
+      },
       body: formData
     });
 
@@ -32,9 +35,10 @@ export async function getIncidents(skip = 0, limit = 10) {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
       }
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -47,19 +51,116 @@ export async function getIncidents(skip = 0, limit = 10) {
   }
 }
 
-export async function getContext(message, onMessage, onError, onEnd) {
+export async function createNewChat(title) {
   try {
     const response = await fetch(`${API_URL}/chats`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
+      },
+      body: JSON.stringify({ title })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error('Create new chat error:', error);
+    throw new Error('Failed to create new chat.');
+  }
+}
+
+export async function deleteChat(chatId) {
+  try {
+    const response = await fetch(`${API_URL}/chats/${chatId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Delete chat error:', error);
+    throw new Error('Failed to delete chat.');
+  }
+}
+
+export async function getAllChats() {
+  try {
+    const response = await fetch(`${API_URL}/chats`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error('Fetch chats error:', error);
+    throw new Error('Failed to fetch chats.');
+  }
+}
+
+export async function getChatHistory(chatId) {
+  try {
+    const response = await fetch(`${API_URL}/chats/${chatId}/messages`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error('Fetch chat history error:', error);
+    throw new Error('Failed to fetch chat history.');
+  }
+}
+
+export async function askQuestion(chatId, message, onMessage, onError, onEnd) {
+  try {
+    const response = await fetch(`${API_URL}/chats/${chatId}/ask`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
         'Accept': 'text/event-stream',
+        'Authorization': `Bearer ${localStorage.getItem('access_token') || ''}`
       },
       body: JSON.stringify({ message })
     });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const contentType = response.headers.get('content-type') || '';
+
+    if (!contentType.includes('text/event-stream')) {
+      const payload = await response.json();
+      if (payload?.answer) {
+        onMessage && onMessage({ message: payload.answer, chat_id: payload.chat_id });
+      }
+      onEnd && onEnd();
+      return;
     }
 
     const reader = response.body.getReader();
@@ -72,7 +173,7 @@ export async function getContext(message, onMessage, onError, onEnd) {
         onEnd && onEnd();
         break;
       }
-      
+
       buffer += decoder.decode(value, { stream: true });
       const lines = buffer.split('\n');
       buffer = lines.pop() || '';
@@ -80,7 +181,7 @@ export async function getContext(message, onMessage, onError, onEnd) {
       for (const line of lines) {
         if (line.startsWith('data: ')) {
           const data = line.slice(6).trim();
-          
+
           if (data === '[DONE]') {
             onEnd && onEnd();
             return;
