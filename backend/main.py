@@ -2,10 +2,11 @@ from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import Generator
+import json
 
 from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 import os
@@ -239,14 +240,13 @@ def create_chat(
 ):
     chat = ChatConversation(
         user_id=current_user.id,
-        title=(request.title or "New Chat").strip() or "New Chat",
+        title=(request.title or "New Conversation").strip() or "New Conversation",
     )
     db.add(chat)
     db.commit()
     db.refresh(chat)
 
     return {"id": chat.id, "title": chat.title, "created_at": chat.created_at.isoformat()}
-
 
 @app.get("/chats")
 def list_chats(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
@@ -302,17 +302,42 @@ async def ask_chat(
     clinical_agent = create_clinical_rag_agent(retrieve_clinical_context)
 
     context = await retrieve_clinical_context(request.message, limit=5)
-    parts = []
-    async for delta in clinical_agent.stream_answer(request.message, context):
-        parts.append(delta)
 
-    answer = "".join(parts).strip()
+    # Fetch conversation history for context
+    previous_messages = db.scalars(
+        select(ChatMessage)
+        .where(ChatMessage.chat_id == chat_id)
+        .order_by(ChatMessage.created_at.asc())
+        .limit(4)
+    ).all()
+
+    # Build conversation context from previous messages
+    conversation_history = ""
+    if previous_messages:
+        conversation_history = "Previous conversation context:\n"
+        for msg in previous_messages[-4:]:  # Limit to last 4 messages for context
+            role = "User" if msg.role == "user" else "Assistant"
+            conversation_history += f"{role}: {msg.content}\n"
+        conversation_history += "\n"
 
     db.add(ChatMessage(chat_id=chat.id, role="user", content=request.message))
-    db.add(ChatMessage(chat_id=chat.id, role="assistant", content=answer))
     db.commit()
 
-    return {"chat_id": chat.id, "answer": answer}
+    async def stream_generator():
+        full_answer = ""
+        # Prepare enhanced message with conversation context
+        enhanced_message = f"{conversation_history}New user question: {request.message}"
+        async for delta in clinical_agent.stream_answer(enhanced_message, context):
+            full_answer += delta
+            yield f"data: {json.dumps({'content': delta})}\n\n"
+
+        db.add(
+            ChatMessage(chat_id=chat.id, role="assistant", content=full_answer.strip())
+        )
+        db.commit()
+        yield f"data: {json.dumps({'message': full_answer.strip()})}\n\n"
+
+    return StreamingResponse(stream_generator(), media_type="text/event-stream")
 
 
 @app.delete("/chats/{chat_id}")
