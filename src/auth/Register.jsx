@@ -45,10 +45,10 @@ export default function Register({ onSwitch }) {
     <div className="auth-form">
       <h2>Create account</h2>
       <form onSubmit={submit}>
-        <label>Email</label>
-        <input className="auth-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <label>Password</label>
-        <input className="auth-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <label htmlFor="register-email">Email</label>
+        <input id="register-email" className="auth-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <label htmlFor="register-password">Password</label>
+        <input id="register-password" className="auth-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <div className="field-hint">Password must be at least 6 characters.</div>
         {error && <div className="auth-error">{error}</div>}
         {success && <div className="auth-success">{success}</div>}
