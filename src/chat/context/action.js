@@ -32,7 +32,7 @@ export default function action(state, dispatch) {
   };
 
   const toLocalChat = (chatData = {}) => ({
-    id: chatData.id ?? Date.now(),
+    id: chatData.id ?? null,
     title: chatData.title || "New Conversation",
     ct: chatData.created_at || new Date().toISOString(),
     messages: [],

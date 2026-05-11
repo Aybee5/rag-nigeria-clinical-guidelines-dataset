@@ -39,7 +39,7 @@ class LoginRequest(BaseModel):
 
 
 class CreateChatRequest(BaseModel):
-    title: str | None = "New Chat"
+    title: str | None = None
 
 
 class AskRequest(BaseModel):
