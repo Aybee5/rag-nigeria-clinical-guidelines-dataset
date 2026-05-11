@@ -38,8 +38,6 @@ export default function Register({ onSwitch }) {
 
   function validatePassword(pw) {
     if (!pw || pw.length < 6) return 'Password must be at least 6 characters'
-    if (!/\d/.test(pw)) return 'Password must contain at least one number'
-    if (!/[A-Z]/.test(pw)) return 'Password should include at least one uppercase letter'
     return null
   }
 
@@ -51,7 +49,7 @@ export default function Register({ onSwitch }) {
         <input className="auth-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <label>Password</label>
         <input className="auth-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <div className="field-hint">Password must be 6+ chars, include a number and uppercase letter.</div>
+        <div className="field-hint">Password must be at least 6 characters.</div>
         {error && <div className="auth-error">{error}</div>}
         {success && <div className="auth-success">{success}</div>}
         <button type="submit" disabled={loading}>{loading ? 'Creating...' : 'Create account'}</button>
