@@ -19,24 +19,12 @@ export default function Login({ onSwitch }) {
         setLoading(false)
         return
       }
-      const pwErr = validatePassword(password)
-      if (pwErr) {
-        setError(pwErr)
-        setLoading(false)
-        return
-      }
       await login(email, password)
     } catch (err) {
       setError(err.response?.data?.detail || err.message || 'Login failed')
     } finally {
       setLoading(false)
     }
-  }
-
-  function validatePassword(pw) {
-    if (!pw || pw.length < 6) return 'Password must be at least 6 characters'
-    if (!/\d/.test(pw)) return 'Password must contain at least one number'
-    return null
   }
 
   return (
@@ -47,7 +35,7 @@ export default function Login({ onSwitch }) {
         <input className="auth-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <label>Password</label>
         <input className="auth-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <div className="field-hint">Password must be 6+ chars and include a number.</div>
+        <div className="field-hint">Use the password associated with your account.</div>
         {error && <div className="auth-error">{error}</div>}
         <button type="submit" disabled={loading}>{loading ? 'Signing in...' : 'Sign in'}</button>
       </form>
