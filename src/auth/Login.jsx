@@ -31,10 +31,10 @@ export default function Login({ onSwitch }) {
     <div className="auth-form">
       <h2>Sign in</h2>
       <form onSubmit={submit}>
-        <label>Email</label>
-        <input className="auth-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <label>Password</label>
-        <input className="auth-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <label htmlFor="login-email">Email</label>
+        <input id="login-email" className="auth-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <label htmlFor="login-password">Password</label>
+        <input id="login-password" className="auth-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <div className="field-hint">Use the password associated with your account.</div>
         {error && <div className="auth-error">{error}</div>}
         <button type="submit" disabled={loading}>{loading ? 'Signing in...' : 'Sign in'}</button>
