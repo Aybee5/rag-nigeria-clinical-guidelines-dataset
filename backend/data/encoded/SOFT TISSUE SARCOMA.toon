@@ -1,0 +1,20 @@
+condition_name: Soft Tissue Sarcoma
+condition_slug: soft-tissue-sarcoma
+source: NSTG 2022
+introduction: "Rare disease affecting connective tissue, account for less than 1% of all new cancers yearly. There are more than 50 distinct biologic subtypes affecting blood vessel, lymphatic vessels, nerves, muscle, fat etc in any part of the body."
+clinical_features[1]:
+  - type: Clinical Features
+    features[2]: "Lumps, pain, ulcers","Features of metastases, typically to liver and chest"
+investigations[7]: Trucut/incisional/excision biopsy + histopathology,Chest X-ray,MRI,CT,FBC,LFT and Serum proteins,"Electrolyte, Urea and Creatinine"
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[3]: Radiotherapy,Chemotherapy,Targeted therapy
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment[4]: Surgery,"Wide excision: complete tumour excision with minimum of 2cm tumour-free margin in all planes around the tumour.","Radical excision: complete tumour excision with muscle plane or group","Resection of isolated metastasis (metastatectomy) e.g. localized liver, lung and brain metastases; when local control of the primary lesion has been achieved"
+prognosis: null

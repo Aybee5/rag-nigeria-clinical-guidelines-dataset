@@ -1,0 +1,20 @@
+condition_name: Nephrotic Syndrome
+condition_slug: nephrotic-syndrome
+source: NSTG 2022
+introduction: "A clinical complex characterized by the following: Proteinuria of 3.5 g per 24 hours, Hypoalbuminaemia, Generalized oedema, Hyperlipidaemia, Lipiduria, Hypercoagulability."
+clinical_features[1]:
+  - type: Clinical Features
+    features[2]: Generalized body swelling,Passage of frothy urine
+investigations[4]: "Blood: Serum proteins, Serum lipids","Urine: Urinalysis, 24-hour urine collection for protein estimation",Abdominal ultrasound scan,Renal biopsy
+treatment:
+  goals[2]: Reduce proteinuria,Eradicate peripheral oedema
+  non_drug[0]:
+  drug[3]: Diuretics e.g. loop diuretics like furosemide,Glucocorticoids (e.g. prednisolone),Cytotoxic drugs (e.g. cyclophosphamide) in some steroid-resistant cases
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[3]: Congestive heart failure,Decompensated chronic liver disease,Protein losing enteropathy
+complications[6]: Peripheral arterial or venous thrombosis,Acceleration of atherosclerosis,Protein malnutrition,Vitamin D deficiency,Increased susceptibility to infections,Iron-resistant microcytic hypochromic anaemia
+prevention[2]: Avoid nephrotoxins,Treat bites and stings to prevent p haemolytic streptococcal infection
+other_investigations: null
+definitive_treatment: null
+prognosis: null

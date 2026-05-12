@@ -1,0 +1,22 @@
+condition_name: Kwashiorkor and Marasmus
+condition_slug: kwashiorkor-and-marasmus
+source: NSTG 2022
+introduction: "Adequate nutrition is the intake and utilization of energy-giving and body building foods and nutrients in the right proportions to maintain well-being, and productivity. Malnutrition manifests as stunting, underweight, wasting (kwashiorkor and marasmus), obesity as well as deficiencies of micronutrients."
+clinical_features[2]:
+  - type: Kwashiorkor
+    features[11]: Growth retardation,muscle wasting,anaemia,apathy,moon face,lack-luster skin,easily plucked hair,pedal oedema,hypo-pigmented skin patches,exfoliation,diarrhoea
+  - type: Marasmus
+    features[3]: Thin; protruding bones,"hungry-looking 'old-looking face,'",whimpering cry
+investigations[7]: Full Blood Count,ESR,Stool microscopy,Urinalysis,Serum proteins,Chest radiograph,Mantoux test
+treatment:
+  goals[0]:
+  non_drug[3]: Nutritional counselling,"Adequate nutrient intake: may require assistance and special preparations e.g. nasogastric feeding",Periodic growth monitoring
+  drug[1]: May be indicated where there are specific infections/infestations
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

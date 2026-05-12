@@ -1,0 +1,20 @@
+condition_name: Rheumatoid Arthritis
+condition_slug: rheumatoid-arthritis
+source: NSTG 2022
+introduction: A disease of unknown aetiology; autoimmune mechanisms and immune complex formation have been implicated. Usually begins in early adult life and affects females more frequently.
+clinical_features[1]:
+  - type: Temporomandibular joint involvement
+    features[8]: Patients rarely complain of pain from temporomandibular joint (TMJ),Clinical examination shows TMJ involvement in 50% of cases,Limitation of mouth opening,Softness,Crepitus,Referred pain,Tenderness on biting,Severe disability is unusual
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

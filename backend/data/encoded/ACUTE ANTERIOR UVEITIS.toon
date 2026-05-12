@@ -1,0 +1,20 @@
+condition_name: Acute Anterior Uveitis
+condition_slug: acute-anterior-uveitis
+source: NSTG 2022
+introduction: Inflammation of the iris and ciliary body. Usually occurs without any associated systemic inflammation and may be recurrent.
+clinical_features[1]:
+  - type: Clinical Features
+    features[8]: Blurring of vision,Photophobia,Pain may feature due to ciliary spasms.,Exudation into anterior chamber,Flare and cells,Keratic precipitates on the corneal endothelium,Subsequent posterior synechiae,Miosis due to spasm of sphincter pupillae
+investigations[3]: Chest radiograph to exclude sarcoidosis and tuberculosis,Spinal radiograph (especially lumbrosacral segment) to exclude ankylosing spondilytis,"Serology for rheumatoid factor, antinuclear antibody, etc"
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[3]: "Corticosteroid drops: Betamethasone sodium phosphate 0.1% (1 - 2 hourly until inflammation is controlled, then reduce frequency)",Subconjunctival injection of steroid if severe,Atropine sulphate 0.5% or 1%; 1 drop up to 4 times daily
+  adverse_reactions_and_cautions[1]: Avoid atropine drops if there is risk of acute glaucoma
+  supportive_measures[0]:
+differential_diagnoses[3]: Infective conjunctivitis,Acute iritis,Acute glaucoma
+complications[2]: Secondary glaucoma,Secondary cataracts
+prevention[1]: No real preventive measures
+other_investigations: null
+definitive_treatment: null
+prognosis: null

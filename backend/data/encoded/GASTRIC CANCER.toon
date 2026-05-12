@@ -1,0 +1,22 @@
+condition_name: Gastric Cancer
+condition_slug: gastric-cancer
+source: NSTG 2022
+introduction: "Classification is based on macroscopy (Ulcerative, polypoidal, infiltrative or schirrhus) and histopathology ( Adenocarcinoma (90%), lymphoma, squamous cell carcinoma, sarcoma, carcinoid)"
+clinical_features[2]:
+  - type: Elective
+    features[7]: dyspepsia,early satiety,anorexia,weight loss,"anaemia, with or without dysphagia","enlarged nodes (Virchow's node, Sister Mary Joseph node)",palpable tumour
+  - type: Emergency
+    features[3]: upper gastrointestinal haemorrhage,perforation,gastric outlet obstruction
+investigations[1]: Oesophagogastroduodenoscopy with biopsy for histopathology
+treatment:
+  goals[0]:
+  non_drug[2]: Fluid and nutritional resuscitation of the patient,correction of anaemia
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations[6]: Upper GI (Barium) series,Abdominal CT scan,"Tumour markers like CEA, CA 19-9",FBC,LFT and Serum proteins,"Electrolyte, Urea and Creatinine"
+definitive_treatment[7]: Surgical resection of the tumour offers the best hope,"Subtotal resection: preferred to total gastrectomy because of the attendant Complications of the later","Gastro-jejunostomy: palliative, in advanced cases with gastric outlet obstruction","Chemotherapy: adjuvant and for inoperable cases",Targeted therapy,Radiotherapy,Palliative care
+prognosis: null

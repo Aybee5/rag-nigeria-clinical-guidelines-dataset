@@ -1,0 +1,20 @@
+condition_name: Chronic Myeloid Leukaemia (CML)
+condition_slug: chronic-myeloid-leukaemia-cml
+source: NSTG 2022
+introduction: "Chronic Myeloid Leukaemia (CML), also known as Chronic Myelogenous Leukaemia or Chronic Granulocytic Leukaemia, is a clonal disease resulting from acquired genetic change in a pluripotential haematopoietic stem cell. Altered stem cell proliferation generates a population of differentiated cells, and a greatly expanded total myeloid mass. It is rare below the age of 20 years but occurs in all age groups. There is an increased risk of developing CML with exposure to high doses of irradiation. It is a biphasic or triphasic disease, usually diagnosed in the initial \"chronic\" or stable phase."
+clinical_features[1]:
+  - type: Clinical Features
+    features[13]: Asymptomatic Abdominal swelling/pain,Lethargy,Shortness of breath on exertion,Weight loss,"Unexplained haemorrhage at various sites e.g. gums, intestinal/urinary tracts",Increased sweating,Visual disturbances,Gout,Priapism,Splenomegaly,Anaemia and Haemorrhage,Fever,Lymphadenopathy (rare in chronic phase)
+investigations[3]: Determination of Philadelphia chromosome,Lactic dehydrogenase,Serum calcium
+treatment:
+  goals[3]: Induce remission to achieve complete remission,Maintain disease-free state,Achieve absence of Philadelphia chromosome
+  non_drug[3]: Appropriate nutrition,Adequate hydration,Electrolyte balance
+  drug[3]: "Hydroxycarbamide (hydroxyurea) - Adult: 20-30 mg/kg orally daily or 80 mg/kg every third day","Interferon alpha - Adult: 9 million units subcutaneously or intravenously thrice weekly for 6 - 12 months",Imatinib mesylate - 400 mg orally daily (to be used strictly under specialist supervision)
+  adverse_reactions_and_cautions[8]: Profound myelosuppression,"Profound nausea, vomiting, diarrhoea and abdominal discomfort",Secondary malignancies,"Steroids: Cushing's syndrome, hypertension, diabetes mellitus, immunosuppression, infections","Vincristine: neurotoxicity","Cylophosphamide: alopecia, haemorrhagic cystitis","Daunorubicin: myelosuppression, alopecia, cardiotoxicity",All are contraindicated in patients with history of hypersensitivity reactions to the respective medicines
+  supportive_measures[0]:
+differential_diagnoses[3]: Chronic myelomonocytic leukaemia,Chronic neutrophilic leukaemia,Juvenile chronic myeloid leukaemia
+complications[2]: Blastic transformation,Death
+prevention[2]: Avoid exposure to ionizing radiation,Early detection and treatment
+other_investigations: null
+definitive_treatment: null
+prognosis: null

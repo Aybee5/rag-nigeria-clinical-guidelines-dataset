@@ -1,0 +1,20 @@
+condition_name: Anxiety Disorder
+condition_slug: anxiety-disorder
+source: NSTG 2022
+introduction: "Generalized anxiety disorder (GAD) is characterized by persistent and exaggerated worry about things (health, family, work etc.) and tension, even when there is little or no cause for anxiety. A chronic disorder affecting about 2 - 3% of the population."
+clinical_features[1]:
+  - type: Clinical Features
+    features[4]: "Pre-occupations: often of diverse nature, poor concentration","Muscle aches, headaches and irritability","Sweating, fatigue and insomnia","Shortness of breath, weakness or tiredness and tremors"
+investigations[2]: To exclude medical/physical cause(s),Use psychological questionnaires to confirm diagnosis
+treatment:
+  goals[2]: Achieve remission of symptoms,Prevent relapse
+  non_drug[1]: Cognitive-behavioural therapy
+  drug[3]: Diazepam 10 - 20 mg orally daily,Fluoxetine 20 - 60 mg orally daily,Mirtazapine 15 – 30 mg orally daily
+  adverse_reactions_and_cautions[1]: The risk of dependence (and withdrawal syndromes) limits the utility of benzodiazepines for treatments of long duration
+  supportive_measures[5]: Relaxation techniques,Exercise,"Life style changes (regular exercise, balanced diet etc.)",Acupuncture,Psychotherapy
+differential_diagnoses[1]: Medical causes of suggestive symptoms and signs (e.g. hyperthyroidism)
+complications[7]: Chronicity,Co-morbid depression,Substance use disorders,Insomnia,Poor quality of life,Problems at school or work,Medical morbidity (e.g. hypertension)
+prevention[2]: Avoid undue and extreme stress,Avoid psycho-active substances
+other_investigations: null
+definitive_treatment: null
+prognosis: null

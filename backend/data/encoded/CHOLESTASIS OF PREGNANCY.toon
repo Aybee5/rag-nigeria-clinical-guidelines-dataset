@@ -1,0 +1,20 @@
+condition_name: Cholestasis of Pregnancy
+condition_slug: cholestasis-of-pregnancy
+source: NSTG 2022
+introduction: "Uncommon, in the order of 1:2,000 pregnancies. Presents commonly in late third trimester, after 36 weeks. Clinically significant because of its association with intra-uterine foetal growth retardation (IUGR) and intra-uterine foetal death (IUFD) (mechanism unclear). It is not as a rule associated with maternal Complications"
+clinical_features[1]:
+  - type: Clinical Features
+    features[6]: Generalized pruritus,Decreased foetal movements,Upper abdominal pain,Dark urine,Steatorrhea,Occasionally there is jaundice (particularly in the later stages of the disease)
+investigations[2]: "Liver function tests: Mildly deranged",Serum bilirubin and bile salts may be elevated
+treatment:
+  goals[0]:
+  non_drug[3]: Careful maternal follow-up with LFTs,"Foetal surveillance: by growth (serial ultrasound biometry) and wellbeing (cardio-tocographic foetal) monitoring",If all is well induce at 38 weeks
+  drug[4]: "Colestyramine: binds bile salts and fat soluble vitamins","Vitamin K: To decrease bleeding tendencies","Antihistamines: May offer brief respite",Ursodeoxycholic acid and colestyramine (orally) decrease itching and normalize liver function
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[3]: Viral hepatitis,Early HELLP syndrome,Acute fatty liver
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis[1]: Good with complete recovery in days to weeks

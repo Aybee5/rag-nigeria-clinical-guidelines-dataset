@@ -1,0 +1,20 @@
+condition_name: Priapism
+condition_slug: priapism
+source: NSTG 2022
+introduction: "Persistent penile erection that continues beyond, or is not related to sexual stimulation"
+clinical_features[1]:
+  - type: Clinical Features
+    features[2]: Persistent painful erection lasting several hours,Penis is rigid and tender but the glans penis and corpus spongiosum are soft
+investigations[3]: FBC,Haemoglobin electrophoresis,Colour Doppler/duplex ultrasound
+treatment:
+  goals[3]: Increase venous drainage from the corpora cavernosa,Decrease arterial inflow in high flow priapism,Treat the primary cause(s)
+  non_drug[5]: Shunting procedures,Caverno-glandular shunt,Caverno-spongiosum shunt intensity,Caverno-saphenous shunt,Spinal or epidural anaesthesia
+  drug[2]: "Intracavernosal injection of alpha adrenergic agonist: Phenylephrine testicle 250 - 500 μg",Ephedrine 50 - 100 mg
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[2]: Adequate hydration,Pain relief
+differential_diagnoses[0]:
+complications[1]: Erectile dysfunction
+prevention[1]: Avoid causative drugs
+other_investigations: null
+definitive_treatment: null
+prognosis: null

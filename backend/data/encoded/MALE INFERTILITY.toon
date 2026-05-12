@@ -1,0 +1,22 @@
+condition_name: Male Infertility
+condition_slug: male-infertility
+source: NSTG 2022
+introduction: "Failure to achieve conception after one year of regular, unprotected sexual intercourse in a couple trying to achieve pregnancy. Male factor is responsible for about 50% of infertile unions."
+clinical_features[2]:
+  - type: History
+    features[6]: Duration of infertility,"Ability to have erection, penetration and ejaculation Family history of infertility","History of systemic disease e.g. diabetes mellitus, hypertension, chronic liver disease and tuberculosis",History of sexually transmitted infections and urinary tract infections,History of genital trauma,"History of surgery: herniorraphy, orchidopexy, urethral surgeries, etc"
+  - type: Signs
+    features[3]: Gynaecomastia,"Epispadias, hypospadias, penile deformities","Absence of testis, small sized testis, varicocoeles, hard and irregular epididymis"
+investigations[6]: Semen analysis x 3,"Hormone profile (LH, FSH, testosterone, and prolactin)",Scrotal ultrasound,Trans-rectal ultrasound,Testicular biopsy,Vasography
+treatment:
+  goals[1]: To improve semen quality and restore reproductive capability
+  non_drug[8]: Varicocoelectomy,Vasovasotomy,Epididymo-vasotomy,Transurethral resection of obstructed ejaculatory duct,Intra-uterine insemination,In vitro fertilization,Gamete intra-fallopian tube transfer,Intra-cytoplasmic sperm injection
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

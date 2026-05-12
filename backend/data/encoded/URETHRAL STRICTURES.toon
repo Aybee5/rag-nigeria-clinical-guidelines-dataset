@@ -1,0 +1,20 @@
+condition_name: Urethral Strictures
+condition_slug: urethral-strictures
+source: NSTG 2022
+introduction: "An abnormal narrowing or loss of distensibility of any part of the urethra, as a result of fibrosis. One of the commonest causes of urine retention in tropical Africa. Very rare in females and may result from trauma or inflammation; may be iatrogenic or congenital."
+clinical_features[1]:
+  - type: Clinical Features
+    features[8]: Dysuria,Frequency,Urgency,Poor stream,Straining,Hesitancy,Dribbling,"Examination of the external genitalia may reveal: Urethral indurations, Periurethral or perineal abscess, Urinary fistula"
+investigations[8]: Urinalysis,"Urine microscopy, culture and sensitivity",Urethroscopy,Urethrogram,Uroflowmetry,Abdominal ultrasound,"Serum Urea, Electrolytes and Creatinine",Full Blood Count
+treatment:
+  goals[1]: To restore urethral patency
+  non_drug[4]: Serial dilatation/bouginage,Endoscopic direct visual urethrotomy,"Urethroplasty: excision and end-to-end anastomosis",Substitution urethroplasty
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[4]: Benign prostatic hypertrophy,Prostate cancer,Bladder calculi,Bladder neck stenosis
+complications[6]: Urinary tract infections,Urethral/bladder calculi,Urinary retention,Fournier's gangrene,Perineal urinary fistulae,Progressive renal failure
+prevention[3]: Ensure Prevention of sexually transmitted infections,Prompt and appropriate treatment of sexually transmitted infections,Care and attention to asepsis during instrumentation procedures involving the urethra
+other_investigations: null
+definitive_treatment: null
+prognosis: null

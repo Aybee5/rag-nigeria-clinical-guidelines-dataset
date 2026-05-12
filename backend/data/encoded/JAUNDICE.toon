@@ -1,0 +1,20 @@
+condition_name: Jaundice
+condition_slug: jaundice
+source: NSTG 2022
+introduction: Yellowish green discoloration of the skin or sclera (at Serum bilirubin 2-4mg/dl). Jaundice is not a disease condition. It is either a symptom or a sign.
+clinical_features[1]:
+  - type: Aetiology
+    features[2]: Diseases of the liver and the biliary tract,"Conditions that cause excessive red cells haemolysis: infections, haemoglobinopathies"
+investigations[4]: LFTs,Abdominal ultrasound scan,PT/PTTK,CT/MRI/MRCP
+treatment:
+  goals[2]: Treat underlying cause,Prevent Complications
+  non_drug[0]:
+  drug[2]: "Colestyramine: 3 - 6 g orally 6 hourly in severe obstructive jaundice","Phenobarbital in neonatal jaundice: 5-8 mg/kg orally daily"
+  adverse_reactions_and_cautions[2]: "Colestyramine: diarrhoea","Phenobarbital: dose-dependent respiratory depression"
+  supportive_measures[2]: Reassurance and monitoring,Phototherapy in neonatal jaundice
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment[4]: Obstructive jaundice,ERCP sphincterotomy with stone removal,Stent insertion,Pancreatic head/duodenal head realignment
+prognosis: null

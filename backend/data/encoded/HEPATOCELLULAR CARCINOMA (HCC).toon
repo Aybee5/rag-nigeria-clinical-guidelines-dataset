@@ -1,0 +1,22 @@
+condition_name: Hepatocellular Carcinoma (HCC)
+condition_slug: hepatocellular-carcinoma-hcc
+source: NSTG 2022
+introduction: "The most common primary liver malignancy. HCC has a huge burden on West Africa due to the high endemicity of a number of risk factors like hepatitis B, C, and HIV. In Nigeria, middle aged individuals, mainly males, are more commonly affected and they present late."
+clinical_features[2]:
+  - type: Elective
+    features[5]: Painful right hypochondrial mass,weight loss,early satiety,fatigue,ascites
+  - type: Emergency
+    features[3]: Coagulopathy,encephalopathy,acute abdomen (rupture and haemorrhage)
+investigations[8]: Liver biopsy,Abdominopelvic USS,Abdominal CT,LFT,Serum proteins,"Electrolyte, Urea and Creatinine","Tumour markers (α-fetoprotein, des-gamma-carboxy prothrombin, C-reactive protein)",FBC
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[3]: Hepatitis B screening and vaccination,Abdominal USS/CT,"Serological markers: α-fetoprotein"
+other_investigations: null
+definitive_treatment[6]: "Liver resection - early stages, solitary lesions",arterial ligation for non-resectable lesions,Systemic chemotherapy,percutaneous ethanol injection,radiotherapy,radiofrequency ablation
+prognosis: null

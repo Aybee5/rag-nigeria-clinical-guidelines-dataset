@@ -1,0 +1,20 @@
+condition_name: Congenital Heart Disease
+condition_slug: congenital-heart-disease
+source: NSTG 2022
+introduction: "A heart defect that occurs during the formation of the heart in utero could be fatal (i.e. causes intrauterine death, or death at anytime afterwards). An important cause of perinatal morbidity/mortality."
+clinical_features[1]:
+  - type: Congenital Heart Disease
+    features[6]: "Will depend on the type of the defect:",Mild defects go unnoticed,Stunted growth,Cyanosis,Failure to thrive,Heart murmurs
+investigations[6]: FBC and differentials,"Electrolyte, Urea and Creatinine",Chest radiograph,Electrocardiograhy,Foetal echocardiography,Angiography
+treatment:
+  goals[2]: Relieve symptoms,Treat the definitive defect(s)
+  non_drug[1]: Low salt diet
+  drug[1]: "Treatment of cardiac failure if present with digoxin, diuretics and potassium supplements"
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[2]: Oxygen,Counselling
+differential_diagnoses[2]: Rheumatic heart disease,Endomyocardial fibrosis
+complications[2]: Embolic phenomena,Cardiac failure
+prevention[3]: Pre-conception nutrition education,Antenatal care,Genetic counselling
+other_investigations: null
+definitive_treatment: null
+prognosis: null

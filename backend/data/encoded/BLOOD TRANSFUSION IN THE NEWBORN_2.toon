@@ -1,0 +1,18 @@
+condition_name: Blood Transfusion in the Newborn
+condition_slug: blood-transfusion-in-the-newborn
+source: NSTG 2022
+introduction: "Indicated by: - Acute haemorrhage - Anaemia"
+clinical_features[0]:
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[5]: Use fresh Group O Rhesus negative blood for urgent transfusion,Transfusion recommended when PCV is < 36% and infant is critically ill,Transfusion recommended when PCV is < 30% and infant is stable or surgery is urgently needed,Single volume exchange blood transfusion with 80mL/kg of fresh cross-matched blood for severe anaemia within the first week,Intravenous frusemide 1 mg/kg to manage circulatory overload
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[2]: "Decision to transfuse should be based on the infant's haemodynamics – pulse, blood pressure",Slow drip rate to manage circulatory overload
+differential_diagnoses[0]:
+complications[7]: Transfusion reactions are extremely rare in the newborn,"Risk of transmission of infections such as HIV, Hepatitis B Virus, Hepatitis C Virus, CMV",Hyperkalaemia,Hypocalcaemia,Acidosis,Hypothermia,Circulatory overload is common
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

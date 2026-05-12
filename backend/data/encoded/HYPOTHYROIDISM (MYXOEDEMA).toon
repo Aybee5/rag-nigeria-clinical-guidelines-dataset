@@ -1,0 +1,22 @@
+condition_name: Hypothyroidism (Myxoedema)
+condition_slug: hypothyroidism-myxoedema
+source: NSTG 2022
+introduction: A state of subnormal concentration of thyroid hormones in the circulation is called hypothyroidism. The extreme form of hypothyroidism is referred to as myxoedema.
+clinical_features[2]:
+  - type: Adults
+    features[10]: "Dull facial expression, slow speech and poor memory","Puffiness of the hands, feet and face",Lethargy and fatigue,"Thinning, dryness and loss of hair",Hypothermia,"Bradycardia, reduced systolic and increased diastolic blood pressure",Weight gain,Decreased reflexes,Constipation,Menstrual abnormalities
+  - type: Infants
+    features[2]: Mental and physical retardation,"If not corrected, cretinism"
+investigations[3]: Total serum T3 and T4 levels,TSH stimulation test,TRH test
+treatment:
+  goals[4]: Establish cause,Establish the severity of hypothyroidism,Restore normal body functions,Prevent Complications
+  non_drug[0]:
+  drug[2]: Levothyroxine sodium (thyroxine sodium) for adults and children with specific dosages,Liothyronine sodium (1-tri-iodothyronine sodium) for adults and children with specific dosages
+  adverse_reactions_and_cautions[2]: Thyroxine should not be used alone for long term replacement therapy,Monitor serum levels of hormones to ensure that patients are not exposed to cardiac risks
+  supportive_measures[2]: "Treat anaemia, constipation and other complications as appropriate",Immediate mechanical ventilation in myxoedema coma
+differential_diagnoses[2]: Endogenous depression,Reactive depression
+complications[1]: Myxoedema coma in adults and cretinism in the young
+prevention[1]: Iodinated salt to prevent iodine deficiency
+other_investigations: null
+definitive_treatment: null
+prognosis: null

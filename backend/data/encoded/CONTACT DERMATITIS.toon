@@ -1,0 +1,22 @@
+condition_name: Contact Dermatitis
+condition_slug: contact-dermatitis
+source: NSTG 2022
+introduction: "An acute or chronic dermatitis that results from direct skin contact with chemicals or allergens. These agents could be Chemicals, Animal or plant products. Physical agents like heat, cold, ultraviolet rays or ionizing radiation."
+clinical_features[2]:
+  - type: Acute phase
+    features[1]: "Tiny vesicles, weepy and crusted lesions"
+  - type: Resolving or chronic contact dermatitis
+    features[8]: "Scaling, erythema, and possibly thickened (lichenified) skin","Itching, burning, and stinging may be severe","Contact dermatitis is recognized by the distribution and configuration of the lesion which usually corresponds to the contactant e.g:","Face: cosmetics","Photodermatitis: airborne allergens e.g. dust, fumes, sprays","Neck: nickel necklace, perfume, and collars of garments","Hands: various chemicals handled at home, at work and at leisure hours","Feet: shoes, socks, remedies for athletes' foot, etc"
+investigations[2]: Patch test,Occupational site assessment
+treatment:
+  goals[2]: Cure the dermatitis,Identify cause(s) and avoid further contact
+  non_drug[0]:
+  drug[1]: As for atopic dermatitis
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[2]: Counseling (after identifying the cause),Allergen replacement
+differential_diagnoses[6]: Atopic dermatitis,Seborrhoeic dermatitis,Psoriasis,Dermatophyte infection,Lichen planus,"Face: lupus erythematosus, pellagra, rosacea"
+complications[2]: Impetiginization,Secondary dissemination
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

@@ -1,0 +1,22 @@
+condition_name: Neonatal Sepsis
+condition_slug: neonatal-sepsis
+source: NSTG 2022
+introduction: A clinical syndrome resulting from bacterial blood stream infection with active proliferation of the organisms. Early-Onset sepsis manifests within the first 72 hours of life or at most 7 days of life while Late-Onset sepsis manifests after 7 days of life.
+clinical_features[2]:
+  - type: Non-specific features
+    features[4]: fever,vomiting,poor feeding,poor activity
+  - type: More specific features
+    features[3]: hypothermia,convulsions,jaundice
+investigations[2]: A lumbar tap for cerebrospinal fluid analysis is mandatory unless the infant has cardio-respiratory instability.,"Neuro-imaging studies are required if fever persists or recurs, seizures recur after initial control, or occipitofrontal circumference is increasing."
+treatment:
+  goals[0]:
+  non_drug[2]: Fluid therapy with careful hydration management,"Support care including fluid and caloric balance, blood transfusion for severe anaemia, oxygen therapy and ventilator support for hypoxaemia"
+  drug[3]: Intravenous ceftriaxone 50 mg/kg 12-hourly or cefotaxime 50 mg/kg 6-hourly and gentamicin 2.5 mg/kg 12-hourly,Intravenous ampicillin 50 mg/kg 6-hourly for Listeria monocytogenes infection,Phenobarbitone for seizures; 15 mg/kg loading dose and 2.5 mg/kg 12-hourly maintenance doses
+  adverse_reactions_and_cautions[1]: Fluid restriction not recommended for all infants due to dehydration risk and potential harm
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

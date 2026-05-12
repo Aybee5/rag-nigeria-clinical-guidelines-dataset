@@ -1,0 +1,20 @@
+condition_name: Ankylosis
+condition_slug: ankylosis
+source: NSTG 2022
+introduction: "Follows trauma, infection or other inflammatory condition. A disorder that leads to restriction of mouth opening from partial reduction to complete immobility of the jaw"
+clinical_features[1]:
+  - type: Clinical Features of Ankylosis
+    features[2]: "An extremely disabling affliction that causes problems in mastication, digestion, speech, appearance, and oral hygiene","In growing patients, deformities of the mandible and maxilla may occur together with malocclusion"
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[5]: Temporomandibular joint (TMJ) ankylosis in children is challenging,Surgical correction is technically difficult,Incidence of recurrence after treatment is high,"7-step protocol consists of: aggressive resection of the ankylotic segment, ipsilateral coronoidectomy, contralateral coronoidectomy, lining of the joint with temporalis fascia or cartilage, reconstruction of the ramus with a costochondral graft (CCG), rigid fixation of the graft, early mobilization and aggressive physiotherapy.",Adults may be treated with one or several osteotomies or joint replacement
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

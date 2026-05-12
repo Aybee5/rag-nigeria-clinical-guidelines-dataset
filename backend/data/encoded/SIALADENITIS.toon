@@ -1,0 +1,20 @@
+condition_name: Sialadenitis
+condition_slug: sialadenitis
+source: NSTG 2022
+introduction: Acute infection and inflammation of the salivary glands
+clinical_features[1]:
+  - type: Sublingual Sialadenitis
+    features[5]: Preauricular swelling,Preauricular pain,Fever,Chills,Headache
+investigations[2]: Based on history and clinical findings,Virological evaluations may be employed
+treatment:
+  goals[0]:
+  non_drug[2]: "Supportive care for fever, headache and malaise",Adequate rehydration
+  drug[2]: Antipyretics,Analgesics
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[2]: Bacterial infections,Obstructive diseases
+complications[7]: Meningitis,Pancreatitis,Otitis,Nephritis,Orchitis,Testicular atrophy,Sterility
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

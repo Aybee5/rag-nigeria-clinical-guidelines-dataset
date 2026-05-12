@@ -1,0 +1,20 @@
+condition_name: Rheumatic Heart Disease
+condition_slug: rheumatic-heart-disease
+source: NSTG 2022
+introduction: "A complication of rheumatic fever and common cause of cardiac failure in Nigeria. In Africans it manifests later compared to Caucasians. The mitral valve is most affected, followed by the aortic, then the tricuspid. The lesions can occur in various combinations of regurgitation and stenosis."
+clinical_features[1]:
+  - type: Clinical Features
+    features[18]: Exertional dyspnoea,Paroxysmal nocturnal dyspnoea,Orthopnoea,Leg and abdominal swelling,Cough with production of frothy sputum,Pedal and sacral oedema,"Small volume pulse, which may be irregular",With or without tachycardia,With or without hypotension,Raised JVP,Displaced apex,Left ventricular hypertrophy,Right ventricular hypertrophy,Thrills,Palpable P2,Soft S1; loud P2,S3 or S4,Systolic/diastolic murmurs
+investigations[5]: Chest radiograph,Electrocardiography,Echocardiography,Coronary angiography,"Electrolyte, Urea and Creatinine"
+treatment:
+  goals[3]: Relieve symptoms,Prevent recurrence of rheumatic attack,Repair and replace affected valves
+  non_drug[2]: Bed rest,Low salt diet
+  drug[4]: Treat for heart failure if present,Use anticoagulants if necessary,Prophylaxis against endocarditis (see Infective Endocarditis),Benzathine penicillin 720 mg (1.2 million units) intramuscularly monthly for life
+  adverse_reactions_and_cautions[1]: Penicillin may cause hypersensitivity reaction / anaphylaxis. Caution in patients with a history of penicillin allergy
+  supportive_measures[0]:
+differential_diagnoses[3]: Constrictive pericarditis,Endomyocardial fibrosis,Dilated cardiomyopathy
+complications[4]: "Arrhythmias e.g. atrial fibrillation, heart block",Cardiac failure,Embolic phenomena,Endocarditis
+prevention[1]: Personal hygiene and good sanitation to prevent recurrence of rheumatic fever
+other_investigations: null
+definitive_treatment[3]: Valve replacement,Valve repair,Treat endocarditis
+prognosis: null

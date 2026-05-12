@@ -1,0 +1,22 @@
+condition_name: Stye (Hordeolum)
+condition_slug: stye-hordeolum
+source: NSTG 2022
+introduction: Stye could be external or internal. External stye is the infection of the lash follicle and its associated gland of Zeis or Moll while internal stye (chalazion) is the infection of the meibomian gland.
+clinical_features[2]:
+  - type: Clinical Features
+    features[3]: Painful lump growing on the eyelid,Red swollen area on the eyelid (like a boil),Pain in the affected area of the eyelid
+  - type: Chalazion
+    features[1]: "Firm, painless lump on the eyelid, usually upper lid"
+investigations[1]: "If recurrent, screen for diabetes"
+treatment:
+  goals[0]:
+  non_drug[2]: Apply warm wet pads for 15 minutes 4 times daily until the stye drains,Incision and curettage (if there is still a chalazion lump) as soon as the infection settles
+  drug[4]: Antibiotic eye ointment to stop infection,Chloramphenicol ointment apply 4 times daily for 2 weeks,Systemic antibiotics,Amoxicillin 250 - 500 mg orally every 8 hours for 5 - 7 days
+  adverse_reactions_and_cautions[1]: Discourage the use of traditional eye medication
+  supportive_measures[0]:
+differential_diagnoses[1]: Various eyelid cysts and tumours
+complications[3]: Pre-septal cellulitis,Orbital cellulitis,Cavernous sinus thrombosis
+prevention[2]: Clean eyelids regularly and thoroughly,"For recurrent styes, use baby shampoo to clean the eyelashes regularly"
+other_investigations: null
+definitive_treatment: null
+prognosis: null

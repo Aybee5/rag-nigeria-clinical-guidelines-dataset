@@ -1,0 +1,22 @@
+condition_name: Sjogren's Syndrome
+condition_slug: sjogrens-syndrome
+source: NSTG 2022
+introduction: ""
+clinical_features[2]:
+  - type: Primary
+    features[2]: Dryness of the eyes,Dryness of the mouth
+  - type: Secondary
+    features[2]: Dryness associated with rheumatoid arthritis,Dryness associated with other connective tissue disease
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[7]: Sipping water frequently all day long,Letting ice melt in the mouth,Restricting caffeine intake,"Avoiding mouth rinses, drinks, and medications containing alcohol",Avoiding tobacco products,Humidifying the sleeping area,Coating the lips
+  drug[3]: Sodium carboxymethylcellulose 0.5% aqueous solution (OTC); Disp. 8 floz,Saliva substitutes,"Saliva stimulants such as sugar-free gum, candy, or mints"
+  adverse_reactions_and_cautions[1]: Patients should be cautioned against using products that contain sugar or have a low pH.
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

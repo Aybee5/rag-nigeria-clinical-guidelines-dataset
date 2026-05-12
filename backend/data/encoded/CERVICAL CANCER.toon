@@ -1,0 +1,20 @@
+condition_name: Cervical Cancer
+condition_slug: cervical-cancer
+source: NSTG 2022
+introduction: A malignant tumour of the cervix. It is the third most common cancer in women globally. 85% of global burden and 88% of cervical cancer death occur in developing countries. Usually due to infection with human papilloma virus (HPV). Spread through sex or direct contact in the genital area.
+clinical_features[1]:
+  - type: Clinical Features
+    features[5]: Abnormal vaginal bleeding (usually post-coital),Copious foul-smelling vaginal discharge,Tiredness and weight loss,Dysuria,Recto-vaginal fistula
+investigations[3]: Visual inspection of the cervix,Pap smear,HPV DNA test
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[3]: Screening tests,Timely follow up,HPV vaccination
+other_investigations: null
+definitive_treatment[5]: Cryotherapy,Cervical conization,Surgical excision at early stage,Hysterectomy in late stage,Chemotherapy and radiotherapy in selected cases
+prognosis: null

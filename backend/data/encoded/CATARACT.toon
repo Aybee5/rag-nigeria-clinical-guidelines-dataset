@@ -1,0 +1,20 @@
+condition_name: Cataract
+condition_slug: cataract
+source: NSTG 2022
+introduction: Cataract is the opacification or clouding of the crystalline lens. It is the commonest cause of blindness and low vision in the world.
+clinical_features[1]:
+  - type: Clinical Features
+    features[4]: "Gradual, painless loss of vision","In the early stages, feels like looking through frosted glass.",White pupillary reflex,"If secondary, symptoms and signs of causative disease are also present."
+investigations[4]: Projection of light,Pupillary light reflex,Macular function test,"Ocular ultrasounds scan: especially in cases of trauma to exclude pathology of the posterior segment of the eye"
+treatment:
+  goals[1]: To remove and replace the cataractous lens with clear plastic lens inserted into the eye (except in infants)
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[1]: Intraocular lens implants are not advisable for new born babies and infants
+  supportive_measures[0]:
+differential_diagnoses[2]: Corneal opacity,"Other causes of leucocoria: eg. retinoblastoma (in children); coloboma, severe ocular toxoplasmosis etc."
+complications[3]: "In congenital cases, can lead to amblyopia in children (lazy eye) if not operated early",Intumescent cataract with secondary glaucoma,Phacolytic uveitis and glaucoma
+prevention[2]: Aspirin and other aspirin like analgesics have been found to delay cataracts in patients with diabetes and rheumatoid arthritis,Antioxidant vitamins - Vitamin C has been found to have a protective effect against nuclear and posterior subcapsular cataracts. Vitamin E has also been found to protect against nuclear and cortical cataract
+other_investigations: null
+definitive_treatment[4]: An extracapsular cataract extraction with posterior chamber intraocular lens implant (ECCE + IOL) is the most appropriate for older children and adults,Small incision cataract surgery and phacoemulsification are recent advances of the ECCE technique,"In new born babies and infants, a lensectomy and anterior vitrectomy is the preferred surgical procedure. Aphakic glasses or contact lenses are worn to correct the resulting refractive error",Posterior capsular opacity following ECCE could be treated with surgical or Yag laser capsulotomy
+prognosis: null

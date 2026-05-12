@@ -1,0 +1,20 @@
+condition_name: Foreign Body Impaction
+condition_slug: foreign-body-impaction
+source: NSTG 2022
+introduction: Accidental (rarely intentional) ingestion of foreign bodies which get impacted/stucked in the pharynx or upper oesophagus. Sharp objects may be arrested in the oropharynx or cricopharyngeal sphincter.
+clinical_features[1]:
+  - type: Clinical Features of Foreign Body Impaction
+    features[3]: Dysphagia,Drooling of saliva,Cough
+investigations[1]: Radiograph of neck and chest
+treatment:
+  goals[1]: To remove foreign body expeditiously
+  non_drug[2]: Removal under local anaesthetic if object visualised in oropharynx,Removal under general anaesthetic with oesophagoscopy if object is in hypopharynx or cervical oesophagus
+  drug[1]: Antibiotic prophylaxis with amoxicillin if indicated.
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[1]: "Perforation of oesophagus, mediastinitis, aspiration pneumonitis"
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

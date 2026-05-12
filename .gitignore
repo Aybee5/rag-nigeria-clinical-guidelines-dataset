@@ -138,4 +138,3 @@ backend/.env
 evaluation/.env
 backend/.DS_Store
 evaluation/.DS_Store
-backend/data

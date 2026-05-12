@@ -1,0 +1,20 @@
+condition_name: Renal Cell Carcinoma
+condition_slug: renal-cell-carcinoma
+source: NSTG 2022
+introduction: "Renal cell carcinoma is the 4th most common genitourinary tumour. The incidence is 0.3/100,000 population with a slight male preponderance and affects a younger age group in Nigeria compared to Caucasians in the 6th decade of life."
+clinical_features[1]:
+  - type: Clinical Features
+    features[4]: Loin pain,Total painless haematuria,Swelling,Weight loss
+investigations[9]: FBC,"Electrolyte, Urea and Creatinine",Liver function test,Clotting profiles,Urine M/C/S,Abdominal ultrasound,Abdominal CT scan – useful to establish stage of disease.,Magnetic resonance imaging (MRI),Intravenous pyelography (IVP)
+treatment:
+  goals[0]:
+  non_drug[1]: Active surveillance or watchful waiting – indicated in small incidental renal masses.
+  drug[1]: "Targeted drugs inhibit growth factors that promote growth and spread of tumours. These include sorafenib, sunitinib, nivolumab, axitinib and temsirolimus. This is the treatment of choice for metastatic renal cancer"
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[3]: Xanthogranulomatous pyelonephritis,Oncocytoma,Renal angiomyolipoma
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment[3]: "Surgery – depends on size and number of tumours. Either as partial nephrectomy (also referred to as nephron sparing surgery) or radical nephrectomy. Surgery should be offered to early, small localized renal tumour.","After a period of 3 months, salvage radical nephrectomy may be considered",Chemotherapy and radiotherapy - not successful in treating renal cell carcinoma
+prognosis[2]: Good for early localized tumour 81% 5 - year survival rate.,Reduces with tumour spread to distant metastases and inferior vena cava (8% 5 - year survival)

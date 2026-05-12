@@ -1,0 +1,20 @@
+condition_name: The Red Eye
+condition_slug: the-red-eye
+source: NSTG 2022
+introduction: "The document details the causes of a red eye, which can result from various conditions affecting the eye."
+clinical_features[1]:
+  - type: Aetiology
+    features[5]: Infective conjunctivitis including ophthalmia neonatorum,Allergic conjunctivitis,Keratitis,Scleritis/episcleritis,Trauma to the eye
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

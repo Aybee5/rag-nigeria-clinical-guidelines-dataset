@@ -1,0 +1,24 @@
+condition_name: Urinary Tract Calculi
+condition_slug: urinary-tract-calculi
+source: NSTG 2022
+introduction: "Occurrence of stone(s) in the kidney, ureter, bladder or urethra. Incidence in Nigeria is 7 - 34 per 100,000. Stones are different with respect to their composition (oxalate stones, phosphate stones, uric acid stones and cystine stones)・ Factors promoting stone formation: - Obstruction to urine outflow - Infection in the urinary tract - Crystallization on foreign bodies - Dehydration - Change in pH - In-born errors of metabolism"
+clinical_features[3]:
+  - type: Renal and ureteric stones
+    features[3]: Sudden onset loin pain radiating to the groin,Haematuria,Nausea and vomiting
+  - type: Stones in the bladder
+    features[3]: Frequency,Urgency,Difficulty in passing urine
+  - type: Stones in the urethra
+    features[1]: Urinary retention
+investigations[6]: Urinalysis,Urine culture,"Serum calcium, phosphate and albumin",Intravenous urography (IVU),Ultrasonography,Computerized tomography (non-contrast enhanced)
+treatment:
+  goals[3]: Relieve symptoms,Remove stones,Prevent recurrence
+  non_drug[4]: Increased fluid intake,Endoscopic Short Wave Lithotripsy (ESWL),Endoscopic removal of stones,Open surgical removal
+  drug[6]: Analgesics,Antibiotics to treat infections,Thiazide diuretics,Hydrochorothiazide 5 mg orally daily,Potassium citrate 60 mEq orally daily,Allopurinol 100 mg orally daily
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[4]: Acute pyelonephritis,Renal tumour,Acute appendicitis,"Other causes of urinary obstruction e.g. enlarged prostate, urethral strictures"
+complications[4]: Recurrent and intractable urinary tract infection,Secondary hydronephrosis,Progressive renal failure,Periurethral abscess/urethral fistula
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

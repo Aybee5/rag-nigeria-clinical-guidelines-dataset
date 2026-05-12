@@ -1,0 +1,24 @@
+condition_name: Headaches
+condition_slug: headaches
+source: NSTG 2022
+introduction: It is the commonest neurological disease in outpatient practice. Headache is defined as pain or discomfort in the head and the surrounding structures. Can be classified into primary (idiopathic) and secondary.
+clinical_features[3]:
+  - type: Primary Headaches
+    features[5]: Tension-type,Migraine with or without aura,Cluster headache,Trigeminal neuralgia,Headaches associated with coughing and sexual activity
+  - type: Secondary Headaches
+    features[9]: "Intracranial space-occupying lesions like brain tumours, subdural haematoma",Vascular lesions,Strokes,"Infections, notably HIV, herpes zoster",Disorders of homeostasis affecting cerebral circulation,Alcohol hangover and other substance use disorders,Medication overuse,Irritation of sensory cranial nerves (neuralgias),"Inflammation or diseases of structures/organs in the head region (eyes, nose, sinuses, ears and cervical vertebrae) and post-epileptic state"
+  - type: Atypical Headache
+    features[2]: Headache occurring in unusual circumstances like in sleep disorders (hypoxia),Brain stem malformations
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

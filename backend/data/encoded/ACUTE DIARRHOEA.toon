@@ -1,0 +1,20 @@
+condition_name: Acute Diarrhoea
+condition_slug: acute-diarrhoea
+source: NSTG 2022
+introduction: "A very common clinical problem the world over. Defined as increase in daily frequency, fluidity or volume of stools. May be acute, chronic or intermittent. Aetiology may be infectious or non-infectiious."
+clinical_features[1]:
+  - type: Clinical Features
+    features[6]: "Watery diarrhoea of varying volumes, sometimes with vomiting.",Bloody mucoid stools,Fever,Abdominal pain,Dehydration,Fluid deficit.
+investigations[3]: "Stool microscopy, culture and sensitivity",Full Blood Count,"Urea, Electrolytes and Creatinine"
+treatment:
+  goals[4]: Rehydration.,Correction of electrolyte anomalies,Treat underlying cause (where possible),Treat Complications
+  non_drug[0]:
+  drug[5]: "Oral Rehydration Therapy (ORT): (low osmolarity) for mild to moderate dehydration 500 mL orally over 2 - 3 hours, 3 - 4 times daily","Intravenous sodium chloride 0.9% - 1 litre, 2 - 6 hourly for moderate to severe dehydration",Alternate with Darrow's solution depending on serum potassium,"Children: Use of zinc supplementation - 6 months and above: 20 mg per day for 10 - 14 days - Under 6 months old: 10 mg per day","Specific anti-infective agents for infectious diarrhoeas e.g. metronidazole for amoebiasis, giardiasis"
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[1]: Monitor fluid intake/output
+differential_diagnoses[0]:
+complications[6]: Hypovolaemic shock.,Electrolyte imbalance.,Septicaemia,Intestinal perforation,Gastro-intestinal bleeding,Paralytic ileus
+prevention[3]: Communal and Personal hygiene,Potable water,Sanitary disposal of human waste
+other_investigations: null
+definitive_treatment: null
+prognosis: null

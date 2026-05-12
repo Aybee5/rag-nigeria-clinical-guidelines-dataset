@@ -1,0 +1,18 @@
+condition_name: Prevention of Diabetes
+condition_slug: prevention-of-diabetes
+source: NSTG 2022
+introduction: "Obesity and physical inactivity are the major modifiable risk factors, and should be avoided/corrected"
+clinical_features[0]:
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[3]: "Obesity and physical inactivity are the major modifiable risk factors, and should be avoided/corrected",Onset of diabetes can be delayed in people at high risk by active lifestyle modification,"Lifestyle modification should be the cornerstone of preventative strategies in the following categories of people: Age > 45 years, Overweight and obesity (BMI > 25 kg/m2), Physical inactivity, First degree relatives with diabetes, Previous gestational diabetes, Previously identified IGT or IFG, Dyslipidaemia, Hypertension"
+other_investigations: null
+definitive_treatment: null
+prognosis: null

@@ -1,0 +1,20 @@
+condition_name: Torsion of the Testis
+condition_slug: torsion-of-the-testis
+source: NSTG 2022
+introduction: Twisting of the spermatic cord with compromise of the blood supply to the testis. An uncommon affliction that is most commonly seen in adolescent males. A few cases occur in infancy
+clinical_features[1]:
+  - type: Clinical Features
+    features[6]: "Testicular pain of sudden onset, severe and radiates to the lower abdomen",Nausea and vomiting,"Swollen, high lying testis with reddening of the scrotal skin","Tenderness: Pain can be increased by lifting weights or objects",Absence of the cremasteric reflex,Abnormal lie of the testis on the opposite side
+investigations[2]: "Colour Doppler sonography: an absence of arterial flow is typical","Radionuclide scan using Tc-99m pertechnetate: the twisted testis is avascular"
+treatment:
+  goals[2]: Detorsion,Fixation of the testis to prevent recurrence
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[6]: Acute epididymo-orchitis,Mumps orchitis,Trauma to the testis,Strangulated inguinal hernia,Idiopathic scrotal oedema,Testicular tumour
+complications[4]: Testicular atrophy,Sympathetic orchidopathy,Abnormal sperm count,Infertility
+prevention[0]:
+other_investigations: null
+definitive_treatment[1]: Fixation on the affected side and prophylactic fixation on the opposite side
+prognosis: null

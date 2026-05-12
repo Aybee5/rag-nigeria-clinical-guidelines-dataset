@@ -1,0 +1,18 @@
+condition_name: Salivary Gland Diseases
+condition_slug: salivary-gland-diseases
+source: NSTG 2022
+introduction: A wide spectrum of disorders
+clinical_features[0]:
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[0]:
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[0]:
+differential_diagnoses[0]:
+complications[0]:
+prevention[0]:
+other_investigations: null
+definitive_treatment: null
+prognosis: null

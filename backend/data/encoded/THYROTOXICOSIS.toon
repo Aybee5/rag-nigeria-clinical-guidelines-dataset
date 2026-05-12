@@ -1,0 +1,34 @@
+condition_name: Thyrotoxicosis
+condition_slug: thyrotoxicosis
+source: NSTG 2022
+introduction: "This refers to the clinical, physiological and biochemical manifestation of the effect of excess thyroid hormone on tissues. There is a female preponderance due to the role of autoimmunity in the aetiology."
+clinical_features[8]:
+  - type: Thyroid
+    features[2]: A goitre may or may not be present,May be diffuse or nodular
+  - type: Dermatological
+    features[8]: Increased sweating and pruritus,Warm and moist skin,Pretibial myxoedema,Pigmentation,Vitiligo,Palmar erythema,Onycholysis,Hair loss
+  - type: Cardiorespiratory
+    features[7]: Palpitation,Dyspnoea on exertion,Angina,Cardiac failure,Increased pulse pressure,Tachycardia,Atrial fibrillation
+  - type: Gastrointestinal
+    features[2]: Weight loss despite increased appetite (hyperphagia),Increased stool frequency
+  - type: Neuromuscular
+    features[8]: Tremors,Nervousness,Irritability,Emotional liability and psychosis,Muscle weakness and proximal myopathy,Hyperkinesia,Hyperreflexia,Insomnia
+  - type: Reproductive
+    features[4]: Loss of libido,Impotence,Amenorrhoea/ oligomenorrhoea,Infertility and spontaneous abortions
+  - type: Ocular
+    features[5]: Lid lag/lid retraction,"Grittiness, excessive lacrimation",Exophthalmos,Diplopia,Papilloedema
+  - type: General
+    features[4]: Increased thirst,Polyuria,Fatigue and apathy,"Triad of Proptosis, Nail changes (onycholyis) and Skin changes strongly suggest Graves' disease."
+investigations[7]: "Thyroid Function Test with free T4 and T3 (both high, TSH suppressed)","Thyroid antibodies: Thyroid Peroxidase Antibodies, Thyroglobulin antibody, TSH Receptor antibodies",Radio-labelled thyroid scan with iodine 123,FBC and ESR,"Electrolyte, Urea and Creatinine",Fasting blood sugar,ECG and Echocardiography
+treatment:
+  goals[2]: "Achieve normal metabolic rate by attaining normal serum T3, T4 and TSH levels",Prevent complications
+  non_drug[0]:
+  drug[6]: "Carbimazole: Adult starting dose 30 - 60 mg orally in divided doses daily; Maintenance 10 - 15 mg orally, daily","Propylthiouracil (preferred in pregnancy): Adult starting dose 300 - 450 mg orally in divided doses daily; Maintenance 100 - 150 mg orally in 2 or 3 divided doses daily","Beta-adrenergic blocking drugs: Propranolol 80 - 160 mg orally, daily in divided doses","Iodine (Lugol's solution) in emergency management of thyroid storm, preoperative preparation, etc.",Steroids in autoimmune cases,Radioactive sodium iodine
+  adverse_reactions_and_cautions[2]: Carbimazole and propylthiouracil may cause severe bone marrow suppression (including pancytopenia and agranulocytosis),Contraindicated in breastfeeding mothers
+  supportive_measures[2]: "Appropriate care of any organ or system involved e.g. eye care, and treatment of heart failure","Thyroid storm would require judicious intravenous fluid use, corticosteroids and treatment of the precipitating cause"
+differential_diagnoses[7]: Active tuberculosis,Advanced retroviral disease,Malnutrition,Cancer cachexia,Malabsorption syndrome,Neuropsychiatric disorders,Poorly controlled Diabetes mellitus
+complications[6]: Hyperthyroid crisis (thyroid storm),Tracheal compression,Cardiac failure,Loss of visual acuity,Infertility,Periodic paralysis
+prevention[0]:
+other_investigations: null
+definitive_treatment[1]: "Surgery indicated for patients < 21 years, those intolerant to other agents, patients with large goitres, toxic adenomas, and multinodular goitres"
+prognosis: null

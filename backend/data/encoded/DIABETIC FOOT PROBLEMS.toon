@@ -1,0 +1,20 @@
+condition_name: Diabetic Foot Problems
+condition_slug: diabetic-foot-problems
+source: NSTG 2022
+introduction: "People with diabetes are at increased risk of foot ulcers and amputations which are major causes of morbidity and disability. Both foot ulcers and amputations can be prevented by education, anticipation, early recognition and prompt management."
+clinical_features[1]:
+  - type: Predisposing Factors
+    features[5]: Peripheral neuropathy with loss of sensation,Poor foot hygiene,Peripheral vascular disease,Deformities and abnormal biomechanics,Unsuitable or no footwear
+investigations[0]:
+treatment:
+  goals[0]:
+  non_drug[1]: "Education of health workers, people living with diabetes and their families"
+  drug[0]:
+  adverse_reactions_and_cautions[0]:
+  supportive_measures[4]: Regular inspection and examination of the foot at risk,Identify the at-risk foot,Early treatment of non-ulcerative and ulcerative foot problems,Appropriate footwear
+differential_diagnoses[0]:
+complications[0]:
+prevention[1]: "Education, anticipation, early recognition and prompt management"
+other_investigations: null
+definitive_treatment: null
+prognosis: null
