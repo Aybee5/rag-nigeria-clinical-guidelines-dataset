@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-axios.defaults.baseURL = process.env.VITE_API_BASE_URL;
+axios.defaults.baseURL = "https://healthbot.com.ng";
 
 const AuthContext = createContext(null);
 

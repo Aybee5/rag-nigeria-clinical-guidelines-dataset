@@ -1,4 +1,4 @@
-export const API_URL = process.env.VITE_API_BASE_URL
+export const API_URL = "https://healthbot.com.ng";
 
 export async function uploadFiles(files) {
   const formData = new FormData();
