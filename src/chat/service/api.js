@@ -1,6 +1,4 @@
-export const API_URL = process.env.NODE_ENV === 'production'
-  ? "https://healthbot.com.ng"
-  : 'http://localhost:8000';
+export const API_URL = process.env.VITE_API_BASE_URL
 
 export async function uploadFiles(files) {
   const formData = new FormData();
