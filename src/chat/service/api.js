@@ -1,5 +1,5 @@
 export const API_URL = process.env.NODE_ENV === 'production'
-  ? 'http://localhost:8000'  // render deployed backend address (prod)
+  ? "https://healthbot.com.ng"
   : 'http://localhost:8000';
 
 export async function uploadFiles(files) {
