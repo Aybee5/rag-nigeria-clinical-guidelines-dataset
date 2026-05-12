@@ -25,6 +25,7 @@ from db import SessionLocal, init_db
 from models import User, AuthToken, ChatConversation, ChatMessage
 from auth_utils import hash_password, verify_password, generate_token
 
+
 # ---------------------------
 # Pydantic models
 # ---------------------------
@@ -71,6 +72,7 @@ def get_api_prefixes() -> set[str]:
             prefixes.add(first_segment)
     return prefixes
 
+
 google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
     print("WARNING: GOOGLE_API_KEY environment variable is not set!")
@@ -98,14 +100,15 @@ app = FastAPI(lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://adorable-macaron-2074b9.netlify.app",
-        "https://rag-chat-ui-backend:10000",
+        "https://www.healthbot.com.ng",
         "http://localhost:8080",
+        "https://healthbot.com.ng",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # ---------------------------
 # DB/Auth dependencies
@@ -176,7 +179,9 @@ def register(request: RegisterRequest, db: Session = Depends(get_db)):
             status_code=400, detail="Password must be at least 6 characters"
         )
 
-    existing = db.scalar(select(User).where(User.email == request.email.lower().strip()))
+    existing = db.scalar(
+        select(User).where(User.email == request.email.lower().strip())
+    )
     if existing:
         raise HTTPException(status_code=409, detail="Email already exists")
 
@@ -188,7 +193,11 @@ def register(request: RegisterRequest, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(user)
 
-    return {"id": user.id, "email": user.email, "created_at": user.created_at.isoformat()}
+    return {
+        "id": user.id,
+        "email": user.email,
+        "created_at": user.created_at.isoformat(),
+    }
 
 
 @app.post("/auth/login")
@@ -210,7 +219,11 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
 
 
 @app.post("/auth/logout")
-def logout(request: Request, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def logout(
+    request: Request,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     auth_header = request.headers.get("Authorization", "")
     token_value = auth_header.split(" ", 1)[1].strip()
     token = db.scalar(select(AuthToken).where(AuthToken.token == token_value))
@@ -246,10 +259,17 @@ def create_chat(
     db.commit()
     db.refresh(chat)
 
-    return {"id": chat.id, "title": chat.title, "created_at": chat.created_at.isoformat()}
+    return {
+        "id": chat.id,
+        "title": chat.title,
+        "created_at": chat.created_at.isoformat(),
+    }
+
 
 @app.get("/chats")
-def list_chats(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def list_chats(
+    db: Session = Depends(get_db), current_user: User = Depends(get_current_user)
+):
     chats = db.scalars(
         select(ChatConversation)
         .where(ChatConversation.user_id == current_user.id)
@@ -263,7 +283,11 @@ def list_chats(db: Session = Depends(get_db), current_user: User = Depends(get_c
 
 
 @app.get("/chats/{chat_id}/messages")
-def get_chat_messages(chat_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def get_chat_messages(
+    chat_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     chat = db.scalar(select(ChatConversation).where(ChatConversation.id == chat_id))
     if not chat or chat.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Chat not found")
@@ -341,7 +365,11 @@ async def ask_chat(
 
 
 @app.delete("/chats/{chat_id}")
-def delete_chat(chat_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def delete_chat(
+    chat_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     chat = db.scalar(select(ChatConversation).where(ChatConversation.id == chat_id))
     if not chat or chat.user_id != current_user.id:
         raise HTTPException(status_code=404, detail="Chat not found")
