@@ -3,6 +3,8 @@ from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import Generator
 import json
+import logging
+import time
 
 from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,6 +27,9 @@ from db import SessionLocal, init_db
 from models import User, AuthToken, ChatConversation, ChatMessage
 from auth_utils import hash_password, verify_password, generate_token
 
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # ---------------------------
 # Pydantic models
@@ -319,49 +324,78 @@ async def ask_chat(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    chat = db.scalar(select(ChatConversation).where(ChatConversation.id == chat_id))
-    if not chat or chat.user_id != current_user.id:
-        raise HTTPException(status_code=404, detail="Chat not found")
+    started = time.perf_counter()
+    logger.info("ask_chat start chat_id=%s user_id=%s", chat_id, current_user.id)
 
-    clinical_agent = create_clinical_rag_agent(retrieve_clinical_context)
+    try:
+        chat = db.scalar(select(ChatConversation).where(ChatConversation.id == chat_id))
+        if not chat or chat.user_id != current_user.id:
+            raise HTTPException(status_code=404, detail="Chat not found")
 
-    context = await retrieve_clinical_context(request.message, limit=5)
+        t0 = time.perf_counter()
+        clinical_agent = create_clinical_rag_agent(retrieve_clinical_context)
+        logger.info("create_clinical_rag_agent took %.3fs", time.perf_counter() - t0)
 
-    # Fetch conversation history for context
-    previous_messages = db.scalars(
-        select(ChatMessage)
-        .where(ChatMessage.chat_id == chat_id)
-        .order_by(ChatMessage.created_at.asc())
-        .limit(4)
-    ).all()
+        t1 = time.perf_counter()
+        context = await retrieve_clinical_context(request.message, limit=5)
+        logger.info("retrieve_clinical_context took %.3fs", time.perf_counter() - t1)
 
-    # Build conversation context from previous messages
-    conversation_history = ""
-    if previous_messages:
-        conversation_history = "Previous conversation context:\n"
-        for msg in previous_messages[-4:]:  # Limit to last 4 messages for context
-            role = "User" if msg.role == "user" else "Assistant"
-            conversation_history += f"{role}: {msg.content}\n"
-        conversation_history += "\n"
+        previous_messages = db.scalars(
+            select(ChatMessage)
+            .where(ChatMessage.chat_id == chat_id)
+            .order_by(ChatMessage.created_at.asc())
+            .limit(4)
+        ).all()
+        logger.info("loaded %d previous messages", len(previous_messages))
 
-    db.add(ChatMessage(chat_id=chat.id, role="user", content=request.message))
-    db.commit()
+        conversation_history = ""
+        if previous_messages:
+            conversation_history = "Previous conversation context:\n"
+            for msg in previous_messages[-4:]:
+                role = "User" if msg.role == "user" else "Assistant"
+                conversation_history += f"{role}: {msg.content}\n"
+            conversation_history += "\n"
 
-    async def stream_generator():
-        full_answer = ""
-        # Prepare enhanced message with conversation context
-        enhanced_message = f"{conversation_history}New user question: {request.message}"
-        async for delta in clinical_agent.stream_answer(enhanced_message, context):
-            full_answer += delta
-            yield f"data: {json.dumps({'content': delta})}\n\n"
-
-        db.add(
-            ChatMessage(chat_id=chat.id, role="assistant", content=full_answer.strip())
-        )
+        db.add(ChatMessage(chat_id=chat.id, role="user", content=request.message))
         db.commit()
-        yield f"data: {json.dumps({'message': full_answer.strip()})}\n\n"
 
-    return StreamingResponse(stream_generator(), media_type="text/event-stream")
+        async def stream_generator():
+            full_answer = ""
+            enhanced_message = (
+                f"{conversation_history}New user question: {request.message}"
+            )
+
+            logger.info("streaming started chat_id=%s", chat_id)
+            first_chunk = True
+
+            async for delta in clinical_agent.stream_answer(enhanced_message, context):
+                if first_chunk:
+                    logger.info(
+                        "first stream chunk after %.3fs", time.perf_counter() - started
+                    )
+                    first_chunk = False
+
+                full_answer += delta
+                yield f"data: {json.dumps({'content': delta})}\n\n"
+
+            db.add(
+                ChatMessage(
+                    chat_id=chat.id, role="assistant", content=full_answer.strip()
+                )
+            )
+            db.commit()
+
+            logger.info(
+                "ask_chat done chat_id=%s total=%.3fs",
+                chat_id,
+                time.perf_counter() - started,
+            )
+            yield f"data: {json.dumps({'message': full_answer.strip()})}\n\n"
+
+        return StreamingResponse(stream_generator(), media_type="text/event-stream")
+    except Exception as e:
+        logger.exception("Error in /chats/%s/ask", chat_id)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.delete("/chats/{chat_id}")
@@ -408,6 +442,32 @@ async def serve_frontend_routes(full_path: str):
         raise HTTPException(status_code=404, detail="Frontend build not found")
 
     requested_path = full_path.strip("/")
+
+    # Block sensitive files and directories
+    blocked_patterns = {
+        ".env",
+        ".env.local",
+        ".env.production",
+        ".env.prod",
+        ".env.backup",
+        ".env.bak",
+        ".env.old",
+        ".git",
+        ".aws",
+        "docker-compose.yml",
+        "wp-config",
+        ".htaccess",
+        "sitemap.xml",
+        "robots.txt",
+        "autodiscover",
+        "ReportServer",
+    }
+
+    path_lower = requested_path.lower()
+    for pattern in blocked_patterns:
+        if pattern in path_lower:
+            raise HTTPException(status_code=404, detail="Not found")
+
     if requested_path:
         if ".." in PurePosixPath(requested_path).parts:
             raise HTTPException(status_code=404, detail="Not found")
