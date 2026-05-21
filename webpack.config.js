@@ -12,9 +12,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
+    publicPath: "/",
   },
   devServer: {
     open: true,
+    historyApiFallback: true,
   },
   devtool: "inline-source-map",
   resolve: {
