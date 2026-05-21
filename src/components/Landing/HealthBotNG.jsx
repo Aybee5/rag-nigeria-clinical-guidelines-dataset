@@ -541,12 +541,7 @@ function Nav() {
         >
           GitHub
         </a>
-        <a
-          href="/app"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={styles.navCta}
-        >
+        <a href="/app" rel="noopener noreferrer" style={styles.navCta}>
           Try it free
         </a>
       </div>
@@ -633,7 +628,6 @@ function Hero() {
       <div className="fade-4" style={styles.heroCta}>
         <a
           href="/app"
-          target="_blank"
           rel="noopener noreferrer"
           className="btn-primary"
           style={styles.btnPrimary}
@@ -845,7 +839,6 @@ function CTABand() {
       </p>
       <a
         href="/app"
-        target="_blank"
         rel="noopener noreferrer"
         className="btn-primary"
         style={{
@@ -874,12 +867,7 @@ function Footer() {
         <span style={styles.footerName}>HealthBot NG</span>
       </a>
       <div style={styles.footerLinks}>
-        <a
-          href="/app"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={styles.footerLink}
-        >
+        <a href="/app" rel="noopener noreferrer" style={styles.footerLink}>
           Try the app
         </a>
         <a
