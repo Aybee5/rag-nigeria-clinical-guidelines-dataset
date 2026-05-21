@@ -509,6 +509,11 @@ function GoogleFonts() {
       .btn-primary:hover  { background: #065035 !important; transform: translateY(-1px); }
       .btn-secondary:hover { background: #F0F2EF !important; transform: translateY(-1px); }
       .nav-link:hover { color: #111210 !important; }
+
+      @media (max-width: 650px) {
+        .nav-link { display: none !important; }
+      }
+
     `}</style>
   );
 }

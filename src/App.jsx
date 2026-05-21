@@ -10,7 +10,6 @@ import HealthBotLanding from "./components/Landing/HealthBotNG";
 function AuthGate() {
   const { user, loading } = useAuth();
   const [mode, setMode] = useState("login");
-
   if (loading) return <div className="auth-loading">Loading…</div>;
   if (user)
     return (
@@ -43,6 +42,7 @@ export default function App() {
           </AuthProvider>
         }
       />
+      <Route path="*" element={<HealthBotLanding />} />
     </Routes>
   );
 }
