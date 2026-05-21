@@ -530,7 +530,7 @@ function Nav() {
         <span style={styles.navName}>HealthBot NG</span>
       </a>
       <div style={styles.navLinks}>
-        <a href="#features" className="nav-link" style={styles.navLink}>
+        {/* <a href="#features" className="nav-link" style={styles.navLink}>
           Features
         </a>
         <a href="#how-it-works" className="nav-link" style={styles.navLink}>
@@ -538,7 +538,7 @@ function Nav() {
         </a>
         <a href="#who-it-helps" className="nav-link" style={styles.navLink}>
           Who it helps
-        </a>
+        </a> */}
         <a
           href="https://github.com/Aybee5/rag-nigeria-clinical-guidelines-dataset"
           target="_blank"

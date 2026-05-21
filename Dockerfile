@@ -33,4 +33,6 @@ WORKDIR /app/backend
 
 EXPOSE 8000
 
+ENV PATH="/app/backend/.venv/bin:$PATH"
+
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "debug"]
