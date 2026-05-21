@@ -510,8 +510,10 @@ function GoogleFonts() {
       .btn-secondary:hover { background: #F0F2EF !important; transform: translateY(-1px); }
       .nav-link:hover { color: #111210 !important; }
 
-      @media (max-width: 650px) {
-        .nav-link { display: none !important; }
+      .nav-link { 
+        @media (max-width: 650px) {
+          display: none;
+       }
       }
 
     `}</style>
