@@ -35,6 +35,10 @@
     color: var(--text-color);
     font-size: var(--font-size-title);
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   &_icon {
     .icon {
@@ -80,6 +84,7 @@
     display: flex;
     justify-content: flex-start;
     flex: 1;
+    min-width: 0;
   }
   &_date {
     color: var(--text-color-gray);
@@ -90,7 +95,9 @@
     border-radius: var(--border-radius);
     font-size: var(--font-size-base);
     padding: var(--spacing);
-    min-width: 300px;
+    min-width: 0;
+    max-width: min(680px, 100%);
+    overflow-wrap: anywhere;
   }
   &_tool {
     margin-bottom: var(--spacing);
@@ -160,4 +167,32 @@
 .textarea {
   color: var(--text-color);
   background: transparent;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 0 var(--spacing-min);
+    &_title {
+      padding: var(--spacing-min);
+      font-size: 14px;
+    }
+  }
+  .length {
+    display: none;
+  }
+  .item {
+    &_content {
+      margin-right: 0;
+    }
+    &_user {
+      margin-left: 10px;
+      margin-right: 0;
+    }
+    &_inner {
+      max-width: calc(100vw - 90px);
+    }
+  }
+  .bar {
+    padding: var(--spacing-min);
+  }
 }
